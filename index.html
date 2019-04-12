@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Check Yo"Self | Andreea Hanson FEE 1903</title>
+  <title>Check Yo'Self | Andreea Hanson FEE 1903</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="styles.css">
@@ -12,29 +12,27 @@
 <body>
   <section></section>
   <section class="top-section-checkyoself">
-    <h1>CHECK <span class="yo">YO'</span>SELF</h1>
-    <form class="search-btn-and-input">
-        <button id="search-button" type=submit>
-          <i class="fa fa-search"></i>
-        </button>
-        <input id="search-input" type="text" placeholder="Search">
-    </form>
+    <h1>CHECK <span class="yo">YO'</span> SELF</h1>
+        <form class="search-btn-and-input" action="/action_page.php">
+          <button class="search-button" type="submit"><i class="fa fa-search"></i></button>
+          <input class="search-input" type="text" name="search" placeholder="Search">
+        </form>
   </section>
   <div class="container aside-and-main">
     <aside>
       <nav>
+        <p class="aside-todo-title-text text">ToDO Title</p>
         <form class="aside-form-todo-title">
-          <p class="aside-todo-title">ToDO Title</p>
           <textarea type="text" id="todo-title-input"></textarea>
         </form>
-        <form class="aside-form-todo-item">
-          <p class="aside-todo-item">ToDo Item</p>
-          <textarea type="text" id="todo-item-input"></textarea>
-          <button class="aside-plus-button"></button>
+        <p class="aside-todo-title-text text">ToDo Item</p>
+        <form class="aside-todo-item" action="/action_page.php">
+          <input type="text" name="add item">
+          <button type="submit"><i class="fa fa-search"></i></button>
         </form>
         <button class="make-task-list-button button">Make Task List</button>
         <button class="clearr-all-button button">Clear All</button>
-        <div></div>
+        <div class="aside-horizontal-line"></div>
         <button class="filter-by-urgency-button button">Filter by Urgency</button>
       </nav>
     </aside>
