@@ -11,7 +11,7 @@
 </head>
 <body>
   <section>
-    <h1></h1>
+    <h1>CHECK <span class='yo'>YO'</span>SELF</h1>
     <form class="search-btn-and-input">
         <button id="search-button" type=submit>
           <i class="fa fa-search"></i>
@@ -23,38 +23,43 @@
     <nav>
       <form>
         <p>ToDO Title</p>
-        <textarea type="text" id="body-input"></textarea>
+        <textarea type="text" id="todo-title-input"></textarea>
       </form>
-      <form class="search-btn-and-input">
-        <button id="search-button" type=submit>
-          <i class="fa fa-search"></i>
-        </button>
+      <form>
+        <p class="aside-todo-title">ToDo Item</p>
         <input id="search-input" type="text" placeholder="Search">
+        <button></button>
       </form>
-      <button>Make Task List</button>
-      <button>Clear All</button>
+      <button class='make-task-list-button'>Make Task List</button>
+      <button class='clearr-all-button'>Clear All</button>
       <div></div>
-      <button></button>
+      <button class='filter-by-urgency-button'>Filter by Urgency</button>
     </nav>
   </aside>
   <main> 
-    <article>
+    <article class='task-card'>
       <header>
-        <h3></h3>
+        <h3>Task Title</h3>
       </header>
-        <figure></figure>
+        <figure>
+          <ul>
+            <li><input type="text"><p>Don't ever play yourself</p></li>
+            <li><input type="text"><p>Every chance I get, I water the plants</p></li>
+            <li><input type="text"><p>Lion! Cloth talk.</p></li>
+          </ul>
+        </figure>
       <footer>
-          <div>
+          <div class='bottom-task-card-left-urgent'>
           <img id="urgent-button" class="urgent-button-task icon-button" src="images/upvote.svg" alt="urgent icon">
           <p>URGENT</p>  
           </div>
-          <div>
-          <button></button>
+          <div class='bottom-task-card-right-delete'>
+          <button class='delete-button'></button>
           <p>DELETE</p>  
           </div>
       </footer>
     </article>
   </main>
-  <script src="idea.js"></script>
+  <script src="todo-list.js"></script>
   <script src="main.js"></script>
 </body>
