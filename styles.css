@@ -1,0 +1,132 @@
+body{
+  font-family: 'Open Sans';
+  margin: 0;
+}
+
+.top-section-checkyoself {
+  background-color: #1f1f3d;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+  padding: 5px;
+  width: auto;
+}
+
+h1{
+  color: #ffff;
+  font-weight: 800;
+  font-size: 40px;
+}
+
+.yo {
+  color: #fec40e;
+}
+
+form {
+  display: inline-flex;
+}
+
+#search-input {
+  border: 1px solid #5356A4;
+  border-radius: 2%;
+  height: 40px;
+  width: 370px;
+} 
+
+#search-button {
+  background-color: #f4f7f8;
+  border: #1F1F3D;
+  border-radius: 2%;
+  color: white;
+  height: 43px;
+  width: 40px;
+}
+
+.search-btn-and-input {
+  flex-direction: row;
+}
+
+.container {
+  display: grid;
+  grid-template-areas: 
+  "aside main main"
+  "aside section section";
+  grid-template-columns: 28% 72%;
+  grid-template-rows: auto;
+  height: 100vh;
+}
+
+aside {
+  background-color: #587a8b;
+  grid-area: aside;
+}
+
+nav {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 90%;
+}
+
+.aside-form-todo-title,
+.aside-form-todo-item {
+  color: white;
+  display:flex;
+  flex-direction: column;
+}
+
+.aside-form-todo-item{
+  display: inline-flex;
+  flex-direction: row;
+}
+
+.button {
+  background-color: #1f1f3d;
+  border: none;
+  border-radius: 2%;
+  color: #ffff;
+  font-size: 15px;
+  margin-top: 20px;
+  height: 50px;
+}
+
+textarea {
+  height: 48px;
+}
+
+#todo-item-input {
+  width: 100%;
+}
+
+.aside-plus-button {
+  width: 52px;
+  height: 52px;
+} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
