@@ -1,14 +1,41 @@
+* {
+  box-sizing: border-box;
+}
+
+
+body {
+  display: grid;
+  height: 100vh;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: max-content;
+  grid-template-areas:
+  "header header header"  
+  "aside main main";
+}
+
+section {
+  grid-area: header;
+  height: 12vh;
+}
+
+aside {
+  grid-area: aside;
+}
+
+main {
+  grid-area: main;
+}
+
 body{
   font-family: 'Open Sans';
   margin: 0;
 }
 
 .top-section-checkyoself {
+  align-items: center;
   background-color: #1f1f3d;
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  height: 70px;
   padding: 5px;
   width: auto;
 }
@@ -16,8 +43,9 @@ body{
 h1{
   color: #ffff;
   font-weight: 800;
-  font-size: 45px;
-  margin-left: 15px;
+  font-size: 3em;
+  margin: 0;
+  margin-left: 5px;
 }
 
 .yo {
@@ -30,27 +58,28 @@ form {
 
 .search-btn-and-input{
   border: 2px solid #1f1f3d;
-  width: 425px;
+  width: 460px;
 }
 
 .search-input[type=text] {
-  background: #f1f1f1;
+/*  background: #f1f1f1;*/
   border: none;
   border-radius: 0 2% 2% 0;
   font-size: 17px;
-  height: 38px;
-  margin-right: 10px;
+  height: 58px;
+  margin-right: 5px;
   padding: 10px;
   width: 90%;
 }
 
 .search-button {
-  background: #cae5e3;
+  background-color: #f3f6f7;
   border: none;
   border-radius: 2% 0 0 2%; 
   cursor: pointer;
   font-size: 17px;
   height: 58px;
+  padding: 12px;
   width: 15%;
 }
 
@@ -68,26 +97,19 @@ form {
   flex-direction: row;
 }
 
-.container {
-  display: grid;
-  grid-template-areas: 
-  "aside main main"
-  "aside section section";
-  grid-template-columns: 28% 72%;
-  grid-template-rows: auto;
-  height: 100vh;
-}
-
 aside {
   background-color: #587a8b;
-  grid-area: aside;
+  border: 3px solid #246a7c;
+  border-right: none;
+  border-left: none;
+  border-top: none;
 }
 
 nav {
     display: flex;
     flex-direction: column;
     margin: auto;
-    width: 90%;
+    width: 95%;
 }
 
 .aside-form-todo-title,
@@ -115,7 +137,7 @@ nav {
   border: 2px solid #1f1f3d;
   float: left;
   font-size: 17px;
-  height: 31px;
+  height: 55px;
   padding: 10px;
   width: 80%;
 }
@@ -142,6 +164,10 @@ nav {
   background: red;
 }
 
+.text {
+  margin-top: 3em;
+}
+
 .button {
   background-color: #1f1f3d;
   border-radius: 2%;
@@ -165,6 +191,25 @@ textarea {
   color: #ffff;
 }
 
+.make-task-list-button{
+  margin-top: 2em;
+}
+
+.minus {
+  border: 1px solid white;
+  width: 50%;
+}
+
+.plus-button {
+  display: flex;
+  justify-content: center;
+}
+
+.plus {
+  border: 1px solid white;
+  transform: rotate(90deg);
+}
+
 .aside-horizontal-line {
   border-top: 2px solid #246a7c;
   margin-top: 32px;
@@ -172,41 +217,78 @@ textarea {
 }
 
 main {
-  border: 1px solid #246a7c;
   background-color: #f7fcfc;
-  display: grid;
-  grid-template-columns: 30% 30% 30%;
-  grid-gap: 15px 15px;
-  grid-template-rows: repeat(2, 1fr);
+  border-top: none;
+  border: 3px solid #246a7c;
+  column-width: 20em;
   padding: 30px;
 }
+
 
 .task-card {
   background-color: #ffff;
   border: 2px solid #d9eceb;
-  display: flex;
-  flex-direction: column;
-  width: 400px;
+  break-inside: avoid;
+  column-width: 14em; 
+  height: fit-content;
+  margin-bottom: 20px;
+  max-width: 450px;
 }
 
 figure {
-  border: 1px solid #cae5e3;
-  margin: 0px;
+  border-top: 1px solid #cae5e3;
+  margin-left: auto;
+  margin-right:auto;
+  padding: 15px;
   width: 100%;
 }
 
+h3 {
+  margin-bottom: 10px;
+  margin-left: 25px;
+  margin-top: 10px;
+  font-size: 20px;
+}
+
+.tick {
+  height: 20px;
+  margin-left: 20px;
+  margin-right: 10px;
+  margin-top: 30px;
+  width: 20px;
+}
+
+.typed-todo {
+  font-size: 30px;
+}
+
 footer {
+  border-top: 1px solid #cae5e3;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+p{
+  color: #587a8b;
+  margin: 0;
 }
 
 
+.bottom-task-card-left-urgent,
+.bottom-task-card-right-delete {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
 
-
-
-
-
-
+.icon-button {
+  margin-left: auto;
+  margin-right: auto;
+  height: 35px;
+  width: 35px;
+}
 
 
 

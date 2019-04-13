@@ -10,25 +10,23 @@
     href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-  <section></section>
   <section class="top-section-checkyoself">
     <h1>CHECK <span class="yo">YO'</span> SELF</h1>
         <form class="search-btn-and-input" action="/action_page.php">
-          <button class="search-button" type="submit"><i class="fa fa-search"></i></button>
+          <img src="images/search.svg" alt="search button" class="search-button" type="submit">
           <input class="search-input" type="text" name="search" placeholder="Search">
         </form>
   </section>
-  <div class="container aside-and-main">
     <aside>
       <nav>
         <p class="aside-todo-title-text text">ToDO Title</p>
         <form class="aside-form-todo-title">
-          <textarea type="text" id="todo-title-input"></textarea>
+          <textarea type="text" id="todo-title-input" name="add title"></textarea>
         </form>
         <p class="aside-todo-title-text text">ToDo Item</p>
         <form class="aside-todo-item" action="/action_page.php">
           <input type="text" name="add item">
-          <button type="submit"><i class="fa fa-search"></i></button>
+          <button class="plus-button" type="submit" data-type="plus" data-field="quant[1]"><div class="minus"><div class="plus"></div></div></button>
         </form>
         <button class="make-task-list-button button">Make Task List</button>
         <button class="clearr-all-button button">Clear All</button>
@@ -42,25 +40,122 @@
           <h3>Task Title</h3>
         </header>
           <figure>
-            <ul>
-              <li><input type="text"><p>Don"t ever play yourself</p></li>
-              <li><input type="text"><p>Every chance I get, I water the plants</p></li>
-              <li><input type="text"><p>Lion! Cloth talk.</p></li>
-            </ul>
+              <img class="tick" src="images/checkbox.svg" alt="checkbox"><span class="typed-todo">Don't ever play yourself </span><p></p>
+              <img class="tick" src="images/checkbox.svg" alt="checkbox"><span class="typed-todo">Every chance I get, I water the plants</span> <p></p>
+              <img class="tick" src="images/checkbox.svg" alt="checkbox"><span class="typed-todo">Lion! Cloth talk. </span><p></p>
           </figure>
         <footer>
             <div class="bottom-task-card-left-urgent">
-            <img id="urgent-button" class="urgent-button-task icon-button" src="images/upvote.svg" alt="urgent icon">
+            <img id="urgent-button" class="urgent-button-task icon-button" src="images/urgent.svg" alt="urgent icon">
             <p>URGENT</p>  
             </div>
             <div class="bottom-task-card-right-delete">
-            <button class="delete-button"></button>
+            <img src="images/delete.svg" alt="delete button" class="delete-button icon-button" type="submit">
+            <p>DELETE</p>  
+            </div>
+        </footer>
+      </article>
+      <article class="task-card">
+        <header>
+          <h3>Task Title</h3>
+        </header>
+          <figure>
+              <img class="tick" src="images/checkbox.svg" alt="checkbox"><span class="typed-todo">Don't ever play yourself </span><p></p>
+              <img class="tick" src="images/checkbox.svg" alt="checkbox"><span class="typed-todo">Every chance I get, I water the plants</span> <p></p>
+              <img class="tick" src="images/checkbox.svg" alt="checkbox"><span class="typed-todo">Lion! Cloth talk. </span><p></p>
+          </figure>
+        <footer>
+            <div class="bottom-task-card-left-urgent">
+            <img id="urgent-button" class="urgent-button-task icon-button" src="images/urgent.svg" alt="urgent icon">
+            <p>URGENT</p>  
+            </div>
+            <div class="bottom-task-card-right-delete">
+            <img src="images/delete.svg" alt="delete button" class="delete-button icon-button" type="submit">
+            <p>DELETE</p>  
+            </div>
+        </footer>
+      </article>
+      <article class="task-card">
+        <header>
+          <h3>Task Title</h3>
+        </header>
+          <figure>
+              <img class="tick" src="images/checkbox.svg" alt="checkbox"><span class="typed-todo">Don't ever play yourself </span><p></p>
+              <img class="tick" src="images/checkbox.svg" alt="checkbox"><span class="typed-todo">Every chance I get, I water the plants</span> <p></p>
+              <img class="tick" src="images/checkbox.svg" alt="checkbox"><span class="typed-todo">Lion! Cloth talk. </span><p></p>
+          </figure>
+        <footer>
+            <div class="bottom-task-card-left-urgent">
+            <img id="urgent-button" class="urgent-button-task icon-button" src="images/urgent.svg" alt="urgent icon">
+            <p>URGENT</p>  
+            </div>
+            <div class="bottom-task-card-right-delete">
+            <img src="images/delete.svg" alt="delete button" class="delete-button icon-button" type="submit">
+            <p>DELETE</p>  
+            </div>
+        </footer>
+      </article>
+      <article class="task-card">
+        <header>
+          <h3>Task Title</h3>
+        </header>
+          <figure>
+              <img class="tick" src="images/checkbox.svg" alt="checkbox"><span class="typed-todo">Don't ever play yourself </span><p></p>
+              <img class="tick" src="images/checkbox.svg" alt="checkbox"><span class="typed-todo">Every chance I get, I water the plants</span> <p></p>
+              <img class="tick" src="images/checkbox.svg" alt="checkbox"><span class="typed-todo">Lion! Cloth talk. </span><p></p>
+          </figure>
+        <footer>
+            <div class="bottom-task-card-left-urgent">
+            <img id="urgent-button" class="urgent-button-task icon-button" src="images/urgent.svg" alt="urgent icon">
+            <p>URGENT</p>  
+            </div>
+            <div class="bottom-task-card-right-delete">
+            <img src="images/delete.svg" alt="delete button" class="delete-button icon-button" type="submit">
+            <p>DELETE</p>  
+            </div>
+        </footer>
+      </article>
+      <article class="task-card">
+        <header>
+          <h3>Task Title</h3>
+        </header>
+          <figure>
+              <img class="tick" src="images/checkbox.svg" alt="checkbox"><span class="typed-todo">Don't ever play yourself </span><p></p>
+              <img class="tick" src="images/checkbox.svg" alt="checkbox"><span class="typed-todo">Every chance I get, I water the plants</span> <p></p>
+              <img class="tick" src="images/checkbox.svg" alt="checkbox"><span class="typed-todo">Lion! Cloth talk. </span><p></p>
+          </figure>
+        <footer>
+            <div class="bottom-task-card-left-urgent">
+            <img id="urgent-button" class="urgent-button-task icon-button" src="images/urgent.svg" alt="urgent icon">
+            <p>URGENT</p>  
+            </div>
+            <div class="bottom-task-card-right-delete">
+            <img src="images/delete.svg" alt="delete button" class="delete-button icon-button" type="submit">
+            <p>DELETE</p>  
+            </div>
+        </footer>
+      </article>
+      <article class="task-card">
+        <header>
+          <h3>Task Title</h3>
+        </header>
+          <figure>
+              <img class="tick" src="images/checkbox.svg" alt="checkbox"><span class="typed-todo">Don't ever play yourself </span><p></p>
+              <img class="tick" src="images/checkbox.svg" alt="checkbox"><span class="typed-todo">Every chance I get, I water the plants</span> <p></p>
+              <img class="tick" src="images/checkbox.svg" alt="checkbox"><span class="typed-todo">Lion! Cloth talk. </span><p></p>
+          </figure>
+        <footer>
+            <div class="bottom-task-card-left-urgent">
+            <img id="urgent-button" class="urgent-button-task icon-button" src="images/urgent.svg" alt="urgent icon">
+            <p>URGENT</p>  
+            </div>
+            <div class="bottom-task-card-right-delete">
+            <img src="images/delete.svg" alt="delete button" class="delete-button icon-button" type="submit">
             <p>DELETE</p>  
             </div>
         </footer>
       </article>
     </main>
-  </div>
   <script src="todo-list.js"></script>
   <script src="main.js"></script>
 </body>
