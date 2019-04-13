@@ -9,7 +9,7 @@ var clearAllButton = document.querySelector('.clear-all-button');
 var filterByUrgencyButton = document.querySelector('.filter-by-urgency-button');
 var searchButton = document.querySelector('.search-button');
 var titleInput = document.querySelector('#todo-title-input');
-
+var newCard = document.querySelector('.task-field');
 
 
 
@@ -17,6 +17,8 @@ plusButton.addEventListener('click', populateTask);
 plusButton.addEventListener('click', clearFields);
 makeTaskListButton.addEventListener('click', makeLotsOfThings);
 tasks.addEventListener('click', deleteAsideTask)
+
+
 
 
 function populateTask(e) {
@@ -53,7 +55,6 @@ function createToDoCard() {
   console.log(card);
   taskArray.push(card);
   console.log(taskArray)
-  clearFields();
 }
 
 
@@ -61,7 +62,8 @@ function makeLotsOfThings() {
   createToDoCard();
   unpopulateTask();
   taskList = [];
-
+  populateCard();
+  clearFields();
 }
 
 
@@ -70,7 +72,27 @@ function deleteAsideTask(e) {
 }
 
 
-
+function populateCard() {
+  newCard.innerHTML+=
+  `<article class="task-card" data-id="${tasks.id}">
+    <h3>${titleInput.value}</h3>
+    <figure class="card-task-section">
+        <ul class="card-task-list">
+        ${tasks.innerHTML}
+        </ul>
+    </figure>
+    <section class="card-bottom">
+      <div class="bottom-task-card-left-urgent">
+        <img id="urgent-button" class="urgent-button-task icon-button" src="images/urgent.svg" alt="urgent icon">
+        <p>URGENT</p>  
+        </div>
+      <div class="bottom-task-card-right-delete">
+        <img src="images/delete.svg" alt="delete button" class="delete-button icon-button" type="submit">
+        <p>DELETE</p>  
+      </div>
+    </section>
+  </article>`
+}
 
 
 
