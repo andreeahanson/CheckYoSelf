@@ -1,4 +1,4 @@
-var newItem = document.querySelector('.aside-task-input');
+
 var plusButton = document.querySelector('.plus-button');
 var tasks = document.querySelector('.aside-task-list');
 var taskInput = document.querySelector('.aside-task-input');
@@ -6,6 +6,7 @@ var taskInput = document.querySelector('.aside-task-input');
 
 
 plusButton.addEventListener('click', createTask);
+plusButton.addEventListener('click', clearFields);
 
 
 
@@ -19,3 +20,9 @@ function createTask(e) {
     </li>`
 };
 
+
+function clearFields(e) {
+  e.preventDefault();
+  var newItem = document.querySelector('.aside-task-input');
+  newItem.value = "";
+}
