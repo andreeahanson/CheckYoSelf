@@ -198,6 +198,7 @@ textarea {
 .minus {
   border: 1px solid white;
   width: 50%;
+  height: 0;
 }
 
 .plus-button {
