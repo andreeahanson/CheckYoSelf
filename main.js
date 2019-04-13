@@ -16,12 +16,11 @@ var titleInput = document.querySelector('#todo-title-input');
 plusButton.addEventListener('click', populateTask);
 plusButton.addEventListener('click', clearFields);
 makeTaskListButton.addEventListener('click', makeLotsOfThings);
-
+tasks.addEventListener('click', deleteAsideTask)
 
 
 function populateTask(e) {
   e.preventDefault();
-  var taskPlaceHolder = document.createElement('div');
   tasks.innerHTML+=
     `<li class="aside-list-item">
       <img class="tick" src="images/checkbox.svg" alt="checkbox">
@@ -37,8 +36,7 @@ function clearFields(e) {
   titleInput.value = "";
 }
 
-function unpopulateTask(e) {
-    var taskPlaceHolder = document.createElement('div');
+function unpopulateTask() {
   tasks.innerHTML= "";
 }
 
@@ -63,11 +61,13 @@ function makeLotsOfThings() {
   createToDoCard();
   unpopulateTask();
   taskList = [];
-  
+
 }
 
 
-
+function deleteAsideTask(e) {
+  e.target.closest("li").remove();
+}
 
 
 
