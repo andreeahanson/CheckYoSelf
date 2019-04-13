@@ -256,9 +256,14 @@ h3 {
   font-size: 20px;
 }
 
-.align-card-checkbox-and-user-input-task {
+.aside-list-item,
+.list-item {
   display: flex;
   align-items: baseline;
+}
+
+ul {
+  padding: 0;
 }
 
 .tick {
@@ -273,7 +278,7 @@ h3 {
   color: black;
 }
 
-footer {
+.card-bottom {
   border-top: 1px solid #cae5e3;
   display: flex;
   justify-content: space-between;
