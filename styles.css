@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  font-family: 'Open Sans';
 }
 
 
@@ -20,10 +21,6 @@ section {
 
 aside {
   grid-area: aside;
-}
-
-main {
-  grid-area: main;
 }
 
 body{
@@ -147,7 +144,7 @@ nav {
   font-size: 17px;
   height: 55px;
   padding: 10px;
-  width: 80%;
+  width: 84%;
 }
 
 .aside-todo-item button {
@@ -159,7 +156,7 @@ nav {
   font-size: 17px;
   height: 55px;
   padding: 10px;
-  width: 20%;
+  width: 16%;
 }
 
 .aside-todo-item::after {
@@ -184,7 +181,8 @@ nav {
   border: none;
   color: #ffff;
   font-size: 25px;
-  height: 50px;
+  font-weight: 600;
+  height: 60px;
   margin-top: 20px;
 }
 
@@ -227,9 +225,9 @@ main {
   background-color: #f2f6f7;
   border-left: 3px solid #246a7c;
   column-width: 20em;
+  grid-area: main;
   padding: 30px;
 }
-
 
 .task-card {
   background-color: #ffff;
@@ -238,7 +236,7 @@ main {
   column-width: 14em; 
   height: fit-content;
   margin-bottom: 20px;
-  max-width: 450px;
+  max-width: 420px;
 }
 
 figure {
