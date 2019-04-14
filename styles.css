@@ -223,9 +223,9 @@ nav {
   margin-bottom: 20px;
 }
 
-.disabled {
+/*.disabled {
   cursor: not-allowed;
-}
+}*/
 
 main {
   background-color: #f2f6f7;
