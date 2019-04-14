@@ -333,14 +333,14 @@ h1 {
   margin-bottom: 3px;
   margin-left: 5px;
   margin-top: 10px;
-  width: 360px;
+  width: 100%;
 }
 
 .search-input[type=text] {
   height: 30px;
   margin-right: 5px;
   padding: 10px;
-  width: 90%;
+  width: 95%;
 }
 
 .search-button {
