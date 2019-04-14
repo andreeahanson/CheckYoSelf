@@ -73,7 +73,9 @@ function deleteAsideTask(e) {
 
 
 function populateCard() {
-  newCard.innerHTML+=
+  var cardPlaceholder = document.createElement("div");
+  newCard.prepend(cardPlaceholder);
+  cardPlaceholder .innerHTML+=
   `<article class="task-card" data-id="${tasks.id}">
     <h3>${titleInput.value}</h3>
     <figure class="card-task-section">
