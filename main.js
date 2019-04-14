@@ -18,6 +18,26 @@ plusButton.addEventListener('click', populateTask);
 makeTaskListButton.addEventListener('click', makeLotsOfThings);
 tasks.addEventListener('click', deleteAsideTask);
 window.addEventListener('load', restoreList);
+newCard.addEventListener('click', function(e) {
+  if (e.target.className === "delete-button icon-button") {
+    e.target.closest(".task-card").remove();
+    var removedList = new ToDoList();
+    var targetId = parseInt(e.target.closest(".task-card").dataset.id);
+    removedList.deleteFromStorage(targetId); 
+  }
+});  
+clearAllButton.addEventListener('click', clearAside)
+
+function clearAside() {
+  var newItem = document.querySelector('.aside-task-input');
+  var titleInput = document.querySelector('#todo-title-input');
+  newItem.value = "";
+  titleInput.value = "";
+  unpopulateTask();
+}
+
+
+
 
 
 function restoreList() {
@@ -27,8 +47,6 @@ function restoreList() {
     return restoredList;
   });
 };
-
-
 
 function populateTask(e) {
   e.preventDefault();
@@ -43,6 +61,7 @@ function populateTask(e) {
 
 function clearFields(e) {
   var newItem = document.querySelector('.aside-task-input');
+  var titleInput = document.querySelector('#todo-title-input');
   newItem.value = "";
   titleInput.value = "";
 }
@@ -95,7 +114,7 @@ function populateCard(card) {
         <p>URGENT</p>  
         </div>
       <div class="bottom-task-card-right-delete">
-        <img src="images/delete.svg" alt="delete button" class="delete-button icon-button" type="submit">
+        <input type="image" src="images/delete.svg" alt="delete button" class="delete-button icon-button">
         <p>DELETE</p>  
       </div>
     </section>
