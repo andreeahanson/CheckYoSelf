@@ -192,10 +192,6 @@ nav {
   background: red;
 }
 
-.disabled {
-  cursor: not-allowed;
-}
-
 #todo-title-input {
   border: 2px solid #1f1f3d;
   height: 55px;
@@ -226,6 +222,10 @@ nav {
   margin-top: 32px;
   margin-bottom: 20px;
 }
+
+/*.disabled {
+  cursor: not-allowed;
+}*/
 
 main {
   background-color: #f2f6f7;
@@ -309,3 +309,161 @@ p{
   height: 30px;
   width: 30px;
 }
+
+
+
+@media screen and (max-width: 400px) {
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.top-section-checkyoself {
+  display: block;
+}
+
+h1 {
+  font-size: 6vw;
+  margin-left: 95px;
+}
+
+
+.search-btn-and-input{
+  margin-bottom: 3px;
+  margin-left: 5px;
+  margin-top: 10px;
+  width: 360px;
+}
+
+.search-input[type=text] {
+  height: 30px;
+  margin-right: 5px;
+  padding: 10px;
+  width: 90%;
+}
+
+.search-button {
+  font-size: 17px;
+  height: 30px;
+  padding: 5px;
+  width: 15%;
+}
+
+.text {
+  color: #c6d3d9;
+  font-size: 15px;
+  margin-top: 1em;
+}
+
+#todo-title-input,
+.aside-todo-item input[type=text],
+.aside-todo-item button {
+  height: 35px;
+}
+
+.button {
+  font-size: 17px;
+  height: 35px;
+  margin-top: 30px;
+}
+
+main {
+  border-right: 3px solid #246a7c;
+  padding: 7px;
+}
+
+.task-card {
+  margin-top: 20px;
+}
+
+h3 {
+  font-size: 15px;
+  height: 1vh;
+  margin-bottom: 0;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.filter-by-urgency-button {
+  margin-bottom: 20px;
+  margin-top: 0px;
+}
+
+.icon-button {
+  height: 18px;
+  width: 18px;
+}
+
+p{
+  font-size: 10px;
+}
+
+.card-bottom {
+  height: 6vh;
+}
+
+.tick {
+  height: 15px;
+}
+
+.typed-todo {
+  font-size: 15px;
+}
+
+figure {
+  padding: 15px;
+  width: 100%;
+}
+
+li {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
