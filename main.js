@@ -10,15 +10,40 @@ var filterByUrgencyButton = document.querySelector('.filter-by-urgency-button');
 var searchButton = document.querySelector('.search-button');
 var titleInput = document.querySelector('#todo-title-input');
 var newCard = document.querySelector('.task-field');
+var cardTask = document.querySelector('.card-task-list');
 
 
 
 plusButton.addEventListener('click', populateTask);
 plusButton.addEventListener('click', clearFields);
-makeTaskListButton.addEventListener('click', makeLotsOfThings);
-tasks.addEventListener('click', deleteAsideTask)
+// makeTaskListButton.addEventListener('click', makeLotsOfThings);
+tasks.addEventListener('click', deleteAsideTask);
+window.addEventListener('load', loadTasks);
+newItem.addEventListener('input', checkInputs);
+titleInput.addEventListener('input', checkInputs);
 
 
+
+
+// function loadTasks() {
+
+// }
+
+
+function checkInputs() {
+  if (newItem.value === '' || titleInput.value === '') {
+    disableButtons();
+  } else {
+    enableButtons();
+  }
+}
+
+
+function enableButtons() {
+    plusButton.classList.remove('disabled');
+    clearAllButton.classList.remove('disabled');
+    makeTaskListButton.classList.remove('disabled');
+};
 
 
 function populateTask(e) {
@@ -40,6 +65,7 @@ function clearFields(e) {
 
 function unpopulateTask() {
   tasks.innerHTML= "";
+  checkInputs();
 }
 
 function instantiateSmallListItems() {
@@ -58,13 +84,14 @@ function createToDoCard() {
 }
 
 
-function makeLotsOfThings() {
-  createToDoCard();
-  unpopulateTask();
-  taskList = [];
-  populateCard();
-  clearFields();
-}
+// function makeLotsOfThings() {
+//   createToDoCard();
+//   unpopulateTask();
+//   taskList = [];
+//   // populateCard();
+//   // populateCardList();
+//   clearFields();
+// }
 
 
 function deleteAsideTask(e) {
@@ -72,29 +99,75 @@ function deleteAsideTask(e) {
 }
 
 
-function populateCard() {
-  var cardPlaceholder = document.createElement("div");
-  newCard.prepend(cardPlaceholder);
-  cardPlaceholder .innerHTML+=
-  `<article class="task-card" data-id="${tasks.id}">
-    <h3>${titleInput.value}</h3>
-    <figure class="card-task-section">
-        <ul class="card-task-list">
-        ${tasks.innerHTML}
-        </ul>
-    </figure>
-    <section class="card-bottom">
-      <div class="bottom-task-card-left-urgent">
-        <img id="urgent-button" class="urgent-button-task icon-button" src="images/urgent.svg" alt="urgent icon">
-        <p>URGENT</p>  
-        </div>
-      <div class="bottom-task-card-right-delete">
-        <img src="images/delete.svg" alt="delete button" class="delete-button icon-button" type="submit">
-        <p>DELETE</p>  
-      </div>
-    </section>
-  </article>`
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// function populateCard() {
+//   var freshCard = 
+//       `<article class="task-card" data-id="${tasks.id}">
+//     <h3>${titleInput.value}</h3>
+//     <figure class="card-task-section">
+//         <ul class="card-task-list">
+//         </ul>
+//     </figure>
+//     <section class="card-bottom">
+//       <div class="bottom-task-card-left-urgent">
+//         <img id="urgent-button" class="urgent-button-task icon-button" src="images/urgent.svg" alt="urgent icon">
+//         <p>URGENT</p>  
+//         </div>
+//       <div class="bottom-task-card-right-delete">
+//         <img src="images/delete.svg" alt="delete button" class="delete-button icon-button" type="submit">
+//         <p>DELETE</p>  
+//       </div>
+//     </section>
+//   </article>`
+//   newCard.insertAdjacentHTML('afterbegin', freshCard);
+// }
+
+
+// function populateCardList() {
+//   var cardListItems = document.querySelector('.card-task-list')
+//   taskArray.forEach(function(element){
+//     var taskListItem = 
+//       `<li class="list-item" data-id='${newItem.id}'>
+//         <img class="tick" src="images/checkbox.svg" alt="checkbox">
+//         <p class="typed-todo">${newItem.value}</p>
+//       </li>`
+//   cardListItems.insertAdjacentHTML('beforeend', taskListItem);
+//   })
+// }
+
+
+
+
+
+
+
+
 
 
 
