@@ -428,7 +428,38 @@ ul {
 }
 
 
+@media screen and (max-width: 850px) {
 
+h1 {
+  font-size: 5vw;
+}
+
+.search-btn-and-input{
+  width: 350px;
+}
+
+.search-input[type=text] {
+  border: none;
+  border-radius: 0 2% 2% 0;
+  font-size: 17px;
+  height: 58px;
+  margin-right: 5px;
+  padding: 10px;
+  width: 90%;
+}
+
+.search-button {
+  background-color: #f3f6f7;
+  border: none;
+  border-radius: 2% 0 0 2%; 
+  cursor: pointer;
+  font-size: 17px;
+  height: 58px;
+  padding: 12px;
+  width: 15%;
+}
+
+}
 
 
 
