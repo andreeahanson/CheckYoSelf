@@ -3,7 +3,7 @@ var newItem = document.querySelector('.aside-task-input');
 var plusButton = document.querySelector('.plus-button');
 var tasks = document.querySelector('.aside-task-list');
 var taskInput = document.querySelector('.aside-task-input');
-var taskArray = [];
+var taskArray = JSON.parse(localStorage.getItem('StoredList')) || [];
 var makeTaskListButton = document.querySelector('.make-task-list-button');
 var clearAllButton = document.querySelector('.clear-all-button');
 var filterByUrgencyButton = document.querySelector('.filter-by-urgency-button');
@@ -17,18 +17,18 @@ var cardTaskList = document.querySelector('.card-task-list');
 plusButton.addEventListener('click', populateTask);
 makeTaskListButton.addEventListener('click', makeLotsOfThings);
 tasks.addEventListener('click', deleteAsideTask);
+window.addEventListener('load', restoreList);
 
 
+function restoreList() {
+  taskArray = taskArray.map(function(oldList) {
+    var restoredList = new ToDoList(oldList.title, oldList.tasks, oldList.id, oldList.urgent);
+    populateCard(restoredList);
+    return restoredList;
+  });
+};
 
 
-
-// function restoredToDoList() {
-//   taskArray = taskArray.map(function(oldToDoList) {
-//     var restoredToDoList = new ToDoList(oldToDoList.title, oldToDoList.tasks, oldToDoList.id)
-//     populateCard(restoredTodo);
-//     return restoredToDoList;
-//   });
-// };
 
 function populateTask(e) {
   e.preventDefault();
@@ -59,12 +59,8 @@ function instantiateSmallListItems() {
 
 function createToDoCard() {
   var card = new ToDoList (titleInput.value, taskList);
-  console.log(card);
-  console.log(card.title)
-  console.log(card.id)
-  console.log(card.tasks)
   taskArray.push(card);
-  console.log(taskArray)
+  card.saveToStorage(taskArray);
   return card;
 }
 
@@ -73,7 +69,7 @@ function makeLotsOfThings() {
   var card = createToDoCard();
   populateCard(card);
   iterateThruTasks(card);
-  // taskList = [];
+  taskList = [];
   unpopulateTask();
   clearFields();
 }
@@ -110,7 +106,6 @@ function populateCard(card) {
 
 function iterateThruTasks(x) {
  var taskListIteration = '';
- console.log(taskListIteration)
  for (var i = 0; i < x.tasks.length; i++){
    taskListIteration += `
      <li class="list-item">
@@ -121,17 +116,18 @@ function iterateThruTasks(x) {
  } return taskListIteration;
 }
 
-// function populateCardList() {
-// var cardTaskList = document.querySelector('.card-task-list');
-// var freshItem =
-// `  <li class="list-item">
-//     <img class="tick" src="images/checkbox.svg" alt="checkbox">
-//     <p class="typed-todo">'${taskInput.value}'</p> 
-//   </li>`;
-//   cardTaskList.insertAdjacentHTML('afterbegin', freshItem);
-  
-// }
 
+// NOT WORKING
+// function handleButtons(e){
+//  e.preventDefault()
+//   if(titleInput.value.length < 1 && newItem.value.length < 1){
+//     plusButton.disabled = true;
+//     plusButton.classList.add('disabled')
+//   } else {
+//     plusButton.disabled = false;
+//     plusButton.classList.remove('disabled')
+//   }
+// };
 
 
 
