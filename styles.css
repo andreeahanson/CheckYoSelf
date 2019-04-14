@@ -193,9 +193,7 @@ nav {
 }
 
 .disabled {
-  opacity: 0.6;
   cursor: not-allowed;
-  background-color: #d0d2d3;
 }
 
 #todo-title-input {
