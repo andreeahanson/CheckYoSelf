@@ -1,5 +1,5 @@
 class ToDoList {
-  constructor(title, tasks, id){
+  constructor(title, tasks, id, urgent){
     this.id = Date.now();
     this.title = title;
     this.urgent = false;
@@ -7,9 +7,7 @@ class ToDoList {
   }
 
   saveToStorage(){
-    // var stringifiedNewTask = JSON.stringify('tasksSaved');
-    // console.log(tasksSaved)
-    // localStorage.setItem('tasksSaved', stringifiedNewTask);
+    localStorage.setItem('StoredList', JSON.stringify(taskArray))
   }
 
 
