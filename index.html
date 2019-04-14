@@ -37,7 +37,7 @@
         <p class="aside-todo-title-text text">Task Item</p>
         <form class="aside-todo-item" action="/action_page.php">
           <input class="aside-task-input" type="text" name="add item">
-          <button class="plus-button disabled" type="submit" data-type="plus" data-field="quant[1]"><div class="minus"><div class="plus"></div></div></button>
+          <button class="plus-button disabled" type="submit" data-type="plus" data-field="quant[1]"><div class="minus disabled"><div class="plus disabled"></div></div></button>
         </form>
         <button class="make-task-list-button button disabled">Make Task List</button>
         <button class="clear-all-button button disabled">Clear All</button>
@@ -49,12 +49,145 @@
 
 
 
-
-<!--       <article class="task-card" data-id="${tasks.id}">
+<!-- 
+      <article class="task-card" data-id="${tasks.id}">
           <h3>Task Title</h3>
           <figure class="card-task-section">
             <ul class="card-task-list">
-            
+            <li class="list-item">
+    <img class="tick" src="images/checkbox.svg" alt="checkbox">
+    <p class="typed-todo">'alskfmaslkfnslfks asdsada asdadsad adasd asdasd asd ad asd asd asd a s</p> 
+  </li><li class="list-item">
+    <img class="tick" src="images/checkbox.svg" alt="checkbox">
+    <p class="typed-todo">'${taskInput.value}'</p> 
+  </li><li class="list-item">
+    <img class="tick" src="images/checkbox.svg" alt="checkbox">
+    <p class="typed-todo">'${taskInput.value}'</p> 
+  </li><li class="list-item">
+    <img class="tick" src="images/checkbox.svg" alt="checkbox">
+    <p class="typed-todo">'${taskInput.value}'</p> 
+  </li><li class="list-item">
+    <img class="tick" src="images/checkbox.svg" alt="checkbox">
+    <p class="typed-todo">'${taskInput.value}'</p> 
+  </li><li class="list-item">
+    <img class="tick" src="images/checkbox.svg" alt="checkbox">
+    <p class="typed-todo">'${taskInput.value}'</p> 
+  </li>
+            </ul>
+          </figure>
+        <section class="card-bottom">
+            <div class="bottom-task-card-left-urgent">
+            <img id="urgent-button" class="urgent-button-task icon-button" src="images/urgent.svg" alt="urgent icon">
+            <p>URGENT</p>  
+            </div>
+            <div class="bottom-task-card-right-delete">
+            <img src="images/delete.svg" alt="delete button" class="delete-button icon-button" type="submit">
+            <p>DELETE</p>  
+            </div>
+        </section>
+      </article>  
+
+
+    <article class="task-card" data-id="${tasks.id}">
+          <h3>Task Title</h3>
+          <figure class="card-task-section">
+            <ul class="card-task-list">
+            <li class="list-item">
+    <img class="tick" src="images/checkbox.svg" alt="checkbox">
+    <p class="typed-todo">'${taskInput.value}'</p> 
+  </li><li class="list-item">
+    <img class="tick" src="images/checkbox.svg" alt="checkbox">
+    <p class="typed-todo">'${taskInput.value}'</p> 
+  </li><li class="list-item">
+    <img class="tick" src="images/checkbox.svg" alt="checkbox">
+    <p class="typed-todo">'${taskInput.value}'</p> 
+  </li><li class="list-item">
+    <img class="tick" src="images/checkbox.svg" alt="checkbox">
+    <p class="typed-todo">'${taskInput.value}'</p> 
+  </li><li class="list-item">
+    <img class="tick" src="images/checkbox.svg" alt="checkbox">
+    <p class="typed-todo">'${taskInput.value}'</p> 
+  </li><li class="list-item">
+    <img class="tick" src="images/checkbox.svg" alt="checkbox">
+    <p class="typed-todo">'${taskInput.value}'</p> 
+  </li>
+            </ul>
+          </figure>
+        <section class="card-bottom">
+            <div class="bottom-task-card-left-urgent">
+            <img id="urgent-button" class="urgent-button-task icon-button" src="images/urgent.svg" alt="urgent icon">
+            <p>URGENT</p>  
+            </div>
+            <div class="bottom-task-card-right-delete">
+            <img src="images/delete.svg" alt="delete button" class="delete-button icon-button" type="submit">
+            <p>DELETE</p>  
+            </div>
+        </section>
+      </article>  
+
+
+
+
+          <article class="task-card" data-id="${tasks.id}">
+          <h3>Task Title</h3>
+          <figure class="card-task-section">
+            <ul class="card-task-list">
+            <li class="list-item">
+    <img class="tick" src="images/checkbox.svg" alt="checkbox">
+    <p class="typed-todo">'${taskInput.value}'</p> 
+  </li><li class="list-item">
+    <img class="tick" src="images/checkbox.svg" alt="checkbox">
+    <p class="typed-todo">'${taskInput.value}'</p> 
+  </li><li class="list-item">
+    <img class="tick" src="images/checkbox.svg" alt="checkbox">
+    <p class="typed-todo">'${taskInput.value}'</p> 
+  </li><li class="list-item">
+    <img class="tick" src="images/checkbox.svg" alt="checkbox">
+    <p class="typed-todo">'${taskInput.value}'</p> 
+  </li><li class="list-item">
+    <img class="tick" src="images/checkbox.svg" alt="checkbox">
+    <p class="typed-todo">'${taskInput.value}'</p> 
+  </li><li class="list-item">
+    <img class="tick" src="images/checkbox.svg" alt="checkbox">
+    <p class="typed-todo">'${taskInput.value}'</p> 
+  </li><li class="list-item">
+    <img class="tick" src="images/checkbox.svg" alt="checkbox">
+    <p class="typed-todo">'${taskInput.value}'</p> 
+  </li>
+            </ul>
+          </figure>
+        <section class="card-bottom">
+            <div class="bottom-task-card-left-urgent">
+            <img id="urgent-button" class="urgent-button-task icon-button" src="images/urgent.svg" alt="urgent icon">
+            <p>URGENT</p>  
+            </div>
+            <div class="bottom-task-card-right-delete">
+            <img src="images/delete.svg" alt="delete button" class="delete-button icon-button" type="submit">
+            <p>DELETE</p>  
+            </div>
+        </section>
+      </article>  
+
+
+
+
+          <article class="task-card" data-id="${tasks.id}">
+          <h3>Task Title</h3>
+          <figure class="card-task-section">
+            <ul class="card-task-list">
+            <li class="list-item">
+    <img class="tick" src="images/checkbox.svg" alt="checkbox">
+    <p class="typed-todo">'${taskInput.value}'</p> 
+  </li><li class="list-item">
+    <img class="tick" src="images/checkbox.svg" alt="checkbox">
+    <p class="typed-todo">'${taskInput.value}'</p> 
+  </li><li class="list-item">
+    <img class="tick" src="images/checkbox.svg" alt="checkbox">
+    <p class="typed-todo">'${taskInput.value}'</p> 
+  </li><li class="list-item">
+    <img class="tick" src="images/checkbox.svg" alt="checkbox">
+    <p class="typed-todo">'${taskInput.value}'</p> 
+  </li>
             </ul>
           </figure>
         <section class="card-bottom">
@@ -68,9 +201,6 @@
             </div>
         </section>
       </article>   -->
-
-
-
 
 
     </main>

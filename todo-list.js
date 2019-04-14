@@ -1,9 +1,9 @@
 class ToDoList {
-  constructor(title, tasks){
+  constructor(title, tasks, id){
     this.id = Date.now();
     this.title = title;
     this.urgent = false;
-    this.tasks = tasks;
+    this.tasks = tasks || [];
   }
 
   saveToStorage(){
@@ -18,7 +18,7 @@ class ToDoList {
 
 
 class Items {
-  constructor(content) {
+  constructor(content, id) {
     this.content = content;
     this.done = false;
     this.id = Date.now();
