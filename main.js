@@ -26,9 +26,18 @@ newCard.addEventListener('click', function(e) {
     removedList.deleteFromStorage(targetId); 
   }
 });  
+clearAllButton.addEventListener('click', clearAside);
 
 
 
+
+function clearAside() {
+  var newItem = document.querySelector('.aside-task-input');
+  var titleInput = document.querySelector('#todo-title-input');
+  newItem.value = "";
+  titleInput.value = "";
+  unpopulateTask();
+};
 
 function restoreList() {
   taskArray = taskArray.map(function(oldList) {
@@ -54,11 +63,11 @@ function clearFields(e) {
   var titleInput = document.querySelector('#todo-title-input');
   newItem.value = "";
   titleInput.value = "";
-}
+};
 
 function unpopulateTask() {
   tasks.innerHTML= "";
-}
+};
 
 function instantiateSmallListItems() {
   var object = new Items (taskInput.value);
@@ -71,7 +80,7 @@ function createToDoCard() {
   taskArray.push(card);
   card.saveToStorage(taskArray);
   return card;
-}
+};
 
 
 function makeLotsOfThings() {
@@ -81,12 +90,12 @@ function makeLotsOfThings() {
   taskList = [];
   unpopulateTask();
   clearFields();
-}
+};
 
 
 function deleteAsideTask(e) {
   e.target.closest("li").remove();
-}
+};
 
 
 function populateCard(card) {
