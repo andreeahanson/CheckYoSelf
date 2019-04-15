@@ -21,6 +21,36 @@ tasks.addEventListener('click', blockAddTask);
 window.addEventListener('load', restoreList);
 newCard.addEventListener('click', deleteCardFromDOM)
 clearAllButton.addEventListener('click', clearAside);
+newCard.addEventListener('click', checkOffTheTasks);
+
+
+
+
+function findTargetIndex (e) {
+  var targetedCard = e.target.closest('.task-card');
+  var targetedId = parseInt(targetedCard.getAttribute('data-id'));
+  var targetedIndex = taskArray.findIndex(e => e.id === targetedId);
+  return targetedIndex;
+}
+
+
+function checkOffTheTasks (e) {
+  if (!e.target.matches('input')) return;
+  var element = e.target;
+  var index = element.dataset.index;
+  var taskIndex = findTargetIndex(e);
+  taskArray[taskIndex].tasks[index].done = !taskArray[taskIndex].tasks[index].done;
+}
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -43,11 +73,6 @@ function blockAddTask(e) {
   // })
   
   e.target.closest("li").remove();
-
-  // var itemIndex = parsedItems.findIndex(function(task) {
-  // return task.id === targetId;
-  // });
-  // parsedItems.splice(itemIndex, 1);
   
 }
 
@@ -74,12 +99,25 @@ function clearAside() {
   unpopulateTask();
 };
 
-function restoreList() {
-  taskArray = taskArray.map(function(oldList) {
-    var restoredList = new ToDoList(oldList.title, oldList.tasks, oldList.id, oldList.urgent);
-    populateCard(restoredList);
-    return restoredList;
-  });
+function restoreList(e) {
+  var getCards = localStorage.getItem('StoredList');
+  var parsedCards = JSON.parse(getCards);
+  console.log(parsedCards)
+  if (parsedCards !== null) {
+    parsedCards.forEach(function(list){
+  var card = new ToDoList(list.title, list.tasks, list.id, list.urgent);
+  taskArray.push(list);
+  populateCard(card);
+  iterateThruTasks(list.tasks, list);
+  list.saveToStorage();
+    })
+  }
+
+  // taskArray = taskArray.map(function(oldList) {
+  //   var restoredList = new ToDoList(oldList.title, oldList.tasks, oldList.id, oldList.urgent);
+  //   populateCard(restoredList);
+  //   return restoredList;
+  // });
 };
 
 function clearTaskField() {
@@ -120,19 +158,23 @@ function populateTask(object) {
   }
 };
 
-function createToDoCard() {
-  var card = new ToDoList (titleInput.value, taskList);
-  taskArray.push(card);
-  card.saveToStorage(taskArray);
-  return card;
-};
+// function createToDoCard() {
+//   var card = new ToDoList (titleInput.value, taskList, Date.now());
+//   taskArray.push(card);
+//   card.saveToStorage(taskArray);
+//   populateCard(card);
+//   iterateThruTasks(taskList, card);
+//   return card;
+// };
 
 
 function makeLotsOfThings() {
   if (titleInput.value && tasks.innerHTML) {
-  var card = createToDoCard();
+  var card = new ToDoList (titleInput.value, taskList, Date.now());
+  taskArray.push(card);
+  card.saveToStorage(taskArray);
   populateCard(card);
-  iterateThruTasks(card);
+  iterateThruTasks(taskList, card);
   taskList = [];
   unpopulateTask();
   clearFields();
@@ -145,7 +187,6 @@ function populateCard(card) {
     <h3>${card.title}</h3>
     <figure class="card-task-section">
         <ul class="card-task-list">
-        ${iterateThruTasks(card)}
         </ul>
     </figure>
     <section class="card-bottom">
@@ -163,31 +204,43 @@ function populateCard(card) {
   };
 
 
-function iterateThruTasks(x) {
- var taskListIteration = '';
- for (var i = 0; i < x.tasks.length; i++){
-   taskListIteration += `
-     <li class="list-item">
-       <img class="tick" src="images/checkbox.svg" alt="checkbox" data-id=${x.tasks[i].id} id="index ${i}"/>
-       <p class="typed-todo">${x.tasks[i].content}</p>
-     </li>
-     `
- } return taskListIteration;
+function iterateThruTasks(theTasks, card) {
+  console.log(theTasks, card)
+  var dataID = `[data-id = "${card.id}"]`;
+  var targetCard = document.querySelector(dataID);
+  targetCard.childNodes[3].childNodes[1].innerHTML = theTasks.map((task, i)=> {
+    return `<li class="list-item">
+       <input type="checkbox" data-index=${i} id="task${i}" ${task.done ? 'checked' : ""}/>
+       <label for="task${i}">${task.content}</label>
+     </li>`
+  }).join("");
+// { 
+ //   taskListIteration += `
+ //     <li class="list-item">
+ //       <img class="tick" src="images/checkbox.svg" alt="checkbox" data-id=${x.tasks[i].id} id="index ${i}"/>
+ //       <p class="typed-todo">${x.tasks[i].content}</p>
+ //     </li>
+ //     `
+ // } return taskListIteration;
 }
 
 
 
-// NOT WORKING
-// function handleButtons(e){
-//  e.preventDefault()
-//   if (newItem.value = "" || titleInput.value = "") {
-//     plusButton.disabled = true;
-//     plusButton.classList.add('disabled')    
-//   } else {
-//     plusButton.disabled = false;
-//     plusButton.classList.remove('disabled')
-//   }
-// };
+// function iterateThruTasks(x) {
+//  var taskListIteration = '';
+//  for (var i = 0; i < x.tasks.length; i++){
+//    taskListIteration += `
+//      <li class="list-item">
+//        <img class="tick" src="images/checkbox.svg" alt="checkbox" data-id=${x.tasks[i].id} id="index ${i}"/>
+//        <p class="typed-todo">${x.tasks[i].content}</p>
+//      </li>
+//      `
+//  } return taskListIteration;
+// }
+
+
+
+
 
 
 

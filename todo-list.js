@@ -18,6 +18,13 @@ class ToDoList {
   parsedItems.splice(itemIndex, 1);
   localStorage.setItem('StoredList', JSON.stringify(parsedItems));
   };
+
+  updateTask (){
+    this.done = !this.done;
+  }
+
+
+
 }
 
 
