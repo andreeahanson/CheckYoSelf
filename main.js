@@ -116,7 +116,7 @@ function populateTask(object) {
   if (taskInput.value) {
   tasks.innerHTML+=
     `<li class="aside-list-item" data-id="${object.id}">
-      <img class="tick" src="images/checkbox.svg" alt="checkbox">
+      <img class="tick" src="images/delete.svg" alt="checkbox">
       <p class="aside-typed-todo">${object.content}</p>
     </li>`
   }
