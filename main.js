@@ -86,12 +86,14 @@ function createToDoCard() {
 
 
 function makeLotsOfThings() {
+  if (titleInput.value && tasks.innerHTML) {
   var card = createToDoCard();
   populateCard(card);
   iterateThruTasks(card);
   taskList = [];
   unpopulateTask();
   clearFields();
+  }
 };
 
 
@@ -135,6 +137,8 @@ function iterateThruTasks(x) {
      `
  } return taskListIteration;
 }
+
+
 
 
 // NOT WORKING
