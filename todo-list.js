@@ -7,7 +7,6 @@ class ToDoList {
   }
 
   saveToStorage(){
-    localStorage.removeItem('StoredList')
     localStorage.setItem('StoredList', JSON.stringify(taskArray))
   }
 

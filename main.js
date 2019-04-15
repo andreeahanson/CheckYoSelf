@@ -40,6 +40,7 @@ function checkOffTheTasks (e) {
   var index = element.dataset.index;
   var taskIndex = findTargetIndex(e);
   taskArray[taskIndex].tasks[index].done = !taskArray[taskIndex].tasks[index].done;
+  localStorage.setItem('StoredList', JSON.stringify(taskArray))
 }
 
 
@@ -201,8 +202,8 @@ function iterateThruTasks(theTasks, card) {
   console.log(dataID)
   targetCard.childNodes[3].childNodes[1].innerHTML = theTasks.map((task, i)=> {
     return `<li class="list-item">
-    <input type="checkbox" data-index=${i} id="task${i}" ${task.done ? 'checked' : ""}/>
-    <label for="task${i}">${task.content}</label>
+    <input class="task-to-check-${task.done}" type="checkbox" data-index=${i} id="task${i}" ${task.done ? 'checked' : ""}/>
+    <label class="content-to-check-${task.done}" for="task${i}">${task.content}</label>
     </li>`
   }).join("");
 // { 
