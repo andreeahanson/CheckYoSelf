@@ -31,7 +31,7 @@ function blockAddTask(e) {
   for(let i=0; i < taskList.length ; i++){
     if(taskList[i].id === targetId) {
       index = taskList.indexOf(taskList[i])
-      taskList.splice(index)
+      taskList.splice(index,1)
     }
   }
 
