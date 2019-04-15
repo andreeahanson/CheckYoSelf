@@ -8,11 +8,9 @@ var makeTaskListButton = document.querySelector('.make-task-list-button');
 var clearAllButton = document.querySelector('.clear-all-button');
 var filterByUrgencyButton = document.querySelector('.filter-by-urgency-button');
 var searchButton = document.querySelector('.search-button');
-var searchInput = document.querySelector('.search-input');
 var titleInput = document.querySelector('#todo-title-input');
 var newCard = document.querySelector('.task-field');
 var cardTaskList = document.querySelector('.card-task-list');
-
 
 
 
@@ -179,26 +177,20 @@ function iterateThruTasks(x) {
 
 
 
+// NOT WORKING
+// function handleButtons(e){
+//  e.preventDefault()
+//   if (newItem.value = "" || titleInput.value = "") {
+//     plusButton.disabled = true;
+//     plusButton.classList.add('disabled')    
+//   } else {
+//     plusButton.disabled = false;
+//     plusButton.classList.remove('disabled')
+//   }
+// };
 
-searchButton.addEventListener('click', searchFilter);
-searchInput.addEventListener('keyup', searchFilter);
 
-function searchFilter(e) {
-  e.preventDefault();
-  removeCardFilter ()
-  var searchText = searchInput.value;
-  var textSearch = taskArray.filter(function (task) {
-    return task.title.toLowerCase().includes(searchText);
-  });
 
-  textSearch.forEach(function(card) {
-    populateCard(card);
-  })
-};
-
-function removeCardFilter () {
-  newCard.innerHTML = '';
-};
 
 
 
