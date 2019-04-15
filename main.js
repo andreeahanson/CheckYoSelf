@@ -82,12 +82,16 @@ function restoreList() {
   });
 };
 
-
-function clearFields(e) {
+function clearTaskField() {
   var newItem = document.querySelector('.aside-task-input');
-  var titleInput = document.querySelector('#todo-title-input');
   newItem.value = "";
+}
+
+
+function clearFields() {
+  var titleInput = document.querySelector('#todo-title-input');
   titleInput.value = "";
+  clearTaskField();
 };
 
 function unpopulateTask() {
@@ -101,6 +105,7 @@ function instantiateSmallListItems(e) {
   console.log(taskList)
   taskList.push(object);
   populateTask(object);
+  clearTaskField();
   }
 };
 
