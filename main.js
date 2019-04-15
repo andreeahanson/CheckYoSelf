@@ -186,7 +186,7 @@ function populateCard(card) {
         <p>URGENT</p>  
         </div>
       <div class="bottom-task-card-right-delete">
-        <input type="image" src="images/delete.svg" alt="delete button" class="delete-button icon-button">
+        <img src="images/delete.svg" alt="delete button" class="delete-button icon-button">
         <p>DELETE</p>  
       </div>
     </section>
