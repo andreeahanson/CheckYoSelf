@@ -130,6 +130,7 @@ nav {
 .aside-typed-todo {
   color: white;
   font-size: 25px;
+  word-break: break-word;
 }
 
 .aside-plus-button {
@@ -312,7 +313,57 @@ p{
 
 
 
-@media screen and (max-width: 400px) {
+
+
+@media screen and (max-width: 850px) {
+
+h1 {
+  font-size: 5vw;
+}
+
+.search-btn-and-input{
+  width: 350px;
+}
+
+.search-input[type=text] {
+  height: 58px;
+  width: 90%;
+}
+
+.search-button {
+  height: 58px;
+  width: 15%;
+}
+
+
+}
+
+
+
+@media screen and (max-width: 690px) {
+
+.search-input[type=text] {
+  width: 75%;
+}
+
+.button {
+  font-size: 20px;
+}
+
+.task-card {
+  max-width: 350px;
+}
+
+
+.typed-todo {
+  font-size: 20px;
+}
+
+}
+
+
+
+@media screen and (max-width: 425px) {
 
 body {
   display: flex;
@@ -321,6 +372,7 @@ body {
 
 .top-section-checkyoself {
   display: block;
+  height: 7vh;
 }
 
 h1 {
@@ -337,7 +389,7 @@ h1 {
 }
 
 .search-input[type=text] {
-  height: 30px;
+  height: 26px;
   margin-right: 5px;
   padding: 10px;
   width: 95%;
@@ -345,7 +397,7 @@ h1 {
 
 .search-button {
   font-size: 17px;
-  height: 30px;
+  height: 26px;
   padding: 5px;
   width: 15%;
 }
@@ -427,39 +479,6 @@ ul {
 }
 }
 
-
-@media screen and (max-width: 850px) {
-
-h1 {
-  font-size: 5vw;
-}
-
-.search-btn-and-input{
-  width: 350px;
-}
-
-.search-input[type=text] {
-  border: none;
-  border-radius: 0 2% 2% 0;
-  font-size: 17px;
-  height: 58px;
-  margin-right: 5px;
-  padding: 10px;
-  width: 90%;
-}
-
-.search-button {
-  background-color: #f3f6f7;
-  border: none;
-  border-radius: 2% 0 0 2%; 
-  cursor: pointer;
-  font-size: 17px;
-  height: 58px;
-  padding: 12px;
-  width: 15%;
-}
-
-}
 
 
 
