@@ -49,12 +49,14 @@ function restoreList() {
 
 function populateTask(e) {
   e.preventDefault();
+  if (taskInput.value) {
   tasks.innerHTML+=
     `<li class="aside-list-item">
       <img class="tick" src="images/checkbox.svg" alt="checkbox">
       <p class="aside-typed-todo">${taskInput.value}</p>
     </li>`
   instantiateSmallListItems();
+  }
 };
 
 
@@ -138,9 +140,9 @@ function iterateThruTasks(x) {
 // NOT WORKING
 // function handleButtons(e){
 //  e.preventDefault()
-//   if(titleInput.value.length < 1 && newItem.value.length < 1){
+//   if (newItem.value = "" || titleInput.value = "") {
 //     plusButton.disabled = true;
-//     plusButton.classList.add('disabled')
+//     plusButton.classList.add('disabled')    
 //   } else {
 //     plusButton.disabled = false;
 //     plusButton.classList.remove('disabled')
