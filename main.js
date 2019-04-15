@@ -96,11 +96,12 @@ function unpopulateTask() {
 
 function instantiateSmallListItems(e) {
   e.preventDefault()
-  console.log("AWdwedas")
+  if (taskInput.value) {
   var object = new Items (taskInput.value);
   console.log(taskList)
   taskList.push(object);
   populateTask(object);
+  }
 };
 
 
