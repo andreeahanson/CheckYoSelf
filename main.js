@@ -14,20 +14,55 @@ var cardTaskList = document.querySelector('.card-task-list');
 
 
 
-plusButton.addEventListener('click', populateTask);
+plusButton.addEventListener('click', instantiateSmallListItems);
 makeTaskListButton.addEventListener('click', makeLotsOfThings);
-tasks.addEventListener('click', deleteAsideTask);
+tasks.addEventListener('click', blockAddTask);
+
 window.addEventListener('load', restoreList);
-newCard.addEventListener('click', function(e) {
+newCard.addEventListener('click', deleteCardFromDOM)
+clearAllButton.addEventListener('click', clearAside);
+
+
+
+function blockAddTask(e) {
+  var targetId = parseInt(e.target.closest(".aside-list-item").dataset.id);
+  let index = 0;
+
+  for(let i=0; i < taskList.length ; i++){
+    if(taskList[i].id === targetId) {
+      index = taskList.indexOf(taskList[i])
+      taskList.splice(index)
+    }
+  }
+
+  // taskList.forEach(task => {
+  //   if(task.id === targetId) {
+  //     index = taskList.indexOf(task)
+  //     taskList.splice(index)
+  //   }
+  // })
+  
+  e.target.closest("li").remove();
+
+  // var itemIndex = parsedItems.findIndex(function(task) {
+  // return task.id === targetId;
+  // });
+  // parsedItems.splice(itemIndex, 1);
+  
+}
+
+
+
+
+
+function deleteCardFromDOM(e) {
   if (e.target.className === "delete-button icon-button") {
     e.target.closest(".task-card").remove();
     var removedList = new ToDoList();
     var targetId = parseInt(e.target.closest(".task-card").dataset.id);
     removedList.deleteFromStorage(targetId); 
   }
-});  
-clearAllButton.addEventListener('click', clearAside);
-
+};
 
 
 
@@ -47,18 +82,6 @@ function restoreList() {
   });
 };
 
-function populateTask(e) {
-  e.preventDefault();
-  if (taskInput.value) {
-  tasks.innerHTML+=
-    `<li class="aside-list-item">
-      <img class="tick" src="images/checkbox.svg" alt="checkbox">
-      <p class="aside-typed-todo">${taskInput.value}</p>
-    </li>`
-  instantiateSmallListItems();
-  }
-};
-
 
 function clearFields(e) {
   var newItem = document.querySelector('.aside-task-input');
@@ -71,11 +94,25 @@ function unpopulateTask() {
   tasks.innerHTML= "";
 };
 
-function instantiateSmallListItems() {
+function instantiateSmallListItems(e) {
+  e.preventDefault()
+  console.log("AWdwedas")
   var object = new Items (taskInput.value);
+  console.log(taskList)
   taskList.push(object);
+  populateTask(object);
 };
 
+
+function populateTask(object) {
+  if (taskInput.value) {
+  tasks.innerHTML+=
+    `<li class="aside-list-item" data-id="${object.id}">
+      <img class="tick" src="images/checkbox.svg" alt="checkbox">
+      <p class="aside-typed-todo">${object.content}</p>
+    </li>`
+  }
+};
 
 function createToDoCard() {
   var card = new ToDoList (titleInput.value, taskList);
@@ -95,12 +132,6 @@ function makeLotsOfThings() {
   clearFields();
   }
 };
-
-
-function deleteAsideTask(e) {
-  e.target.closest("li").remove();
-};
-
 
 function populateCard(card) {
   var freshCard = 
@@ -137,7 +168,6 @@ function iterateThruTasks(x) {
      `
  } return taskListIteration;
 }
-
 
 
 
