@@ -22,9 +22,6 @@ class ToDoList {
   updateTask (){
     this.done = !this.done;
   }
-
-
-
 }
 
 

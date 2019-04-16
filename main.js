@@ -8,6 +8,7 @@ var makeTaskListButton = document.querySelector('.make-task-list-button');
 var clearAllButton = document.querySelector('.clear-all-button');
 var filterByUrgencyButton = document.querySelector('.filter-by-urgency-button');
 var searchButton = document.querySelector('.search-button');
+var searchInput = document.querySelector('.search-input');
 var titleInput = document.querySelector('#todo-title-input');
 var newCard = document.querySelector('.task-field');
 var cardTaskList = document.querySelector('.card-task-list');
@@ -17,13 +18,32 @@ var cardTaskList = document.querySelector('.card-task-list');
 plusButton.addEventListener('click', instantiateSmallListItems);
 makeTaskListButton.addEventListener('click', makeLotsOfThings);
 tasksAside.addEventListener('click', blockAddTask);
-
 window.addEventListener('load', restoreList);
 newCard.addEventListener('click', deleteCardFromDOM)
 clearAllButton.addEventListener('click', clearAside);
 newCard.addEventListener('click', checkOffTheTasks);
+searchButton.addEventListener('click', searchFilter);
+searchInput.addEventListener('keyup', searchFilter);
+// newCard.addEventListener('click', makeItUrgent)
 
 
+
+function searchFilter(e) {
+  e.preventDefault();
+  removeCardFilter ()
+  var searchText = searchInput.value;
+  var textSearch = taskArray.filter(function (task) {
+    return task.title.toLowerCase().includes(searchText);
+  });
+
+  textSearch.forEach(function(card) {
+    populateCard(card);
+  })
+};
+
+function removeCardFilter () {
+  newCard.innerHTML = '';
+};
 
 
 function findTargetIndex (e) {
@@ -34,6 +54,12 @@ function findTargetIndex (e) {
 }
 
 
+// function makeItUrgent () {
+//   if (!e.target.matches('urgent-button-task icon-button')) return;
+
+// }
+
+
 function checkOffTheTasks (e) {
   if (!e.target.matches('input')) return;
   var element = e.target;
@@ -42,7 +68,6 @@ function checkOffTheTasks (e) {
   taskArray[taskIndex].tasks[index].done = !taskArray[taskIndex].tasks[index].done;
   localStorage.setItem('StoredList', JSON.stringify(taskArray))
 }
-
 
 
 function blockAddTask(e) {
@@ -64,11 +89,7 @@ function blockAddTask(e) {
   // })
   
   e.target.closest("li").remove();
-  
 }
-
-
-
 
 
 function deleteCardFromDOM(e) {
@@ -81,7 +102,6 @@ function deleteCardFromDOM(e) {
 };
 
 
-
 function clearAside() {
   var newItem = document.querySelector('.aside-task-input');
   var titleInput = document.querySelector('#todo-title-input');
@@ -89,6 +109,7 @@ function clearAside() {
   titleInput.value = "";
   unpopulateTask();
 };
+
 
 function restoreList(e) {
   var getCards = localStorage.getItem('StoredList');
@@ -103,13 +124,8 @@ function restoreList(e) {
   card.saveToStorage();
     })
   }
-
-  // taskArray = taskArray.map(function(oldList) {
-  //   var restoredList = new ToDoList(oldList.title, oldList.tasks, oldList.id, oldList.urgent);
-  //   populateCard(restoredList);
-  //   return restoredList;
-  // });
 };
+
 
 function clearTaskField() {
   var newItem = document.querySelector('.aside-task-input');
@@ -123,9 +139,11 @@ function clearFields() {
   clearTaskField();
 };
 
+
 function unpopulateTask() {
   tasksAside.innerHTML= "";
 };
+
 
 function instantiateSmallListItems(e) {
   e.preventDefault()
@@ -148,15 +166,6 @@ function populateTask(object) {
     </li>`
   }
 };
-
-// function createToDoCard() {
-//   var card = new ToDoList (titleInput.value, taskList, Date.now());
-//   taskArray.push(card);
-//   card.saveToStorage(taskArray);
-//   populateCard(card);
-//   iterateThruTasks(taskList, card);
-//   return card;
-// };
 
 
 function makeLotsOfThings() {
@@ -206,29 +215,23 @@ function iterateThruTasks(theTasks, card) {
     <label class="content-to-check-${task.done}" for="task${i}">${task.content}</label>
     </li>`
   }).join("");
-// { 
- //   taskListIteration += `
- //     <li class="list-item">
- //       <img class="tick" src="images/checkbox.svg" alt="checkbox" data-id=${x.tasks[i].id} id="index ${i}"/>
- //       <p class="typed-todo">${x.tasks[i].content}</p>
- //     </li>
- //     `
- // } return taskListIteration;
 }
 
 
 
-// function iterateThruTasks(x) {
-//  var taskListIteration = '';
-//  for (var i = 0; i < x.tasks.length; i++){
-//    taskListIteration += `
-//      <li class="list-item">
-//        <img class="tick" src="images/checkbox.svg" alt="checkbox" data-id=${x.tasks[i].id} id="index ${i}"/>
-//        <p class="typed-todo">${x.tasks[i].content}</p>
-//      </li>
-//      `
-//  } return taskListIteration;
-// }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
