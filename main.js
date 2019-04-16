@@ -205,7 +205,7 @@ function iterateThruTasks(theTasks, card) {
   console.log(theTasks, card)
   var dataID = `[data-id = "${card.id}"]`;
   var targetCard = document.querySelector(dataID);  
-  console.log(dataID)
+  // console.log(dataID)
   targetCard.childNodes[3].childNodes[1].innerHTML = theTasks.map((task, i)=> {
     return `<li class="list-item">
     <input class="task-to-check-${task.done}" type="checkbox" data-index=${i} id="task${i}" ${task.done ? 'checked' : ""}/>
@@ -222,7 +222,7 @@ function iterateThruTasks(theTasks, card) {
 
 function greeting(event){
  var elements = newCard.querySelectorAll('.task-card')
- console.log(elements)
+ // console.log(elements)
  if(!elements.length){
  greetingMessage.removeAttribute('hidden', true)
  } else if(elements.length) {
@@ -260,30 +260,85 @@ function removeCardFilter () {
 
 
 
-newCard.addEventListener('click', makeCardYellow) 
+// newCard.addEventListener('click', makeCardYellow) 
 
-function makeCardYellow (e) {
-  e.preventDefault();
-  var cardToYellow = document.getElementById('lolo');
-  var theUrgentButton = document.getElementById('urgent-button');
+// function makeCardYellow (e) {
+//   e.preventDefault();
+//   var cardToYellow = document.getElementById('lolo');
+//   var theUrgentButton = document.getElementById('urgent-button');
 
-  if (e.target.matches('#urgent-button')) {
-  taskArray.urgent = !taskArray.urgent;
+//   if (e.target.matches('#urgent-button')) {
+//   taskArray.urgent = !taskArray.urgent;
 
 
   
-  cardToYellow.classList.toggle('yellow');
+//   cardToYellow.classList.toggle('yellow');
 
-  theUrgentButton.classList.toggle('hey');
+//   theUrgentButton.classList.toggle('hey');
 
-  // localStorage.setItem('StoredList', JSON.stringify(taskArray))
+//   // localStorage.setItem('StoredList', JSON.stringify(taskArray))
   
+// }
+
+// }
+
+
+
+
+
+
+
+
+
+
+
+// URGENT BUTTON FUNCTION - NOT WORKING YET
+
+newCard.addEventListener('click', cardUrgent)
+
+
+
+
+function cardUrgent (e) {
+  if (e.target.className === 'urgent-button-task icon-button') {
+    var card = e.target.closest('.task-card');
+    console.log(card)
+    var index = findCardIndex(card);
+    console.log('index', index)
+    console.log(taskArray[index].title)
+    var cardToMakeUrgent = new ToDoList(taskArray[index].title, taskArray[index].tasks, taskArray[index].id, taskArray[index].urgent ); 
+  cardToMakeUrgent.updateToDo();
+
+  taskArray.splice(index, 1, cardToMakeUrgent)
+  cardToMakeUrgent.saveToStorage();
+  // cardToMakeUrgent.innerHTML = '';
+}
 }
 
+
+function findCardIndex(card) {
+  var cardId = card.dataset.id;
+  return taskArray.findIndex(function(item) {
+    // console.log(item.id)
+    // console.log(cardId)
+    return item.id == cardId;
+  });
 }
 
 
+function saveUrgency(e, urgent) {
+  taskArray.forEach(function(theList, index){
+  var myCardList = reinstantiateCards(index);
+  var cardId = parseInt(e.target.parentNode.parentNode.parentNode.dataset.id);
+  if (cardId === theList.id) {
+    myCardList.updateList(taskArray, index, urgent);
+  }
+  })
+}
 
+function reinstantiateCards(i) {
+  return new ToDoList (taskArray[i].title, taskArray[i].tasks, taskArray[i].id, taskArray[i].urgent);
+}
 
 
 
