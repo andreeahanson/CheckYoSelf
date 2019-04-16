@@ -106,6 +106,7 @@ function restoreList(e) {
   populateCard(list);
   iterateThruTasks(list.tasks, list);
   card.saveToStorage();
+  greeting();
     })
   }
 
@@ -187,7 +188,7 @@ function populateCard(card) {
     </figure>
     <section class="card-bottom">
       <div class="bottom-task-card-left-urgent">
-        <button id="urgent-button" class="urgent-button-task icon-button" src="images/urgent.svg" alt="urgent icon"><button>
+        <img id="urgent-button" class="urgent-button-task icon-button" src="images/urgent.svg" alt="urgent icon">
         <p>URGENT</p>  
         </div>
       <div class="bottom-task-card-right-delete">
@@ -225,7 +226,7 @@ function greeting(event){
  if(!elements.length){
  greetingMessage.removeAttribute('hidden', true)
  } else if(elements.length) {
-   greetingMessage.setAttribute('hidden', true)
+  greetingMessage.setAttribute('hidden', true)
  }
 };
 
@@ -273,8 +274,8 @@ function makeCardYellow (e) {
   
   cardToYellow.classList.toggle('yellow');
 
-  theUrgentButton.classList.add('hey');
-  theUrgentButton.removeAttribute('background');
+  theUrgentButton.classList.toggle('hey');
+
   // localStorage.setItem('StoredList', JSON.stringify(taskArray))
   
 }
