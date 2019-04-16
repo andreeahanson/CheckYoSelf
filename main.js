@@ -12,18 +12,22 @@ var searchInput = document.querySelector('.search-input')
 var titleInput = document.querySelector('#todo-title-input');
 var newCard = document.querySelector('.task-field');
 var cardTaskList = document.querySelector('.card-task-list');
+var greetingMessage = document.querySelector('.greeting');
 
 
 plusButton.addEventListener('click', instantiateSmallListItems);
 makeTaskListButton.addEventListener('click', makeLotsOfThings);
+makeTaskListButton.addEventListener('click', greeting);
 tasksAside.addEventListener('click', blockAddTask);
-
+window.addEventListener('load', greeting);
 window.addEventListener('load', restoreList);
 newCard.addEventListener('click', deleteCardFromDOM)
+newCard.addEventListener('click', greeting);
 clearAllButton.addEventListener('click', clearAside);
 newCard.addEventListener('click', checkOffTheTasks);
 searchButton.addEventListener('click', searchFilter);
 searchInput.addEventListener('keyup', searchFilter);
+
 
 
 
@@ -78,6 +82,7 @@ function deleteCardFromDOM(e) {
     var removedList = new ToDoList();
     var targetId = parseInt(e.target.closest(".task-card").dataset.id);
     removedList.deleteFromStorage(targetId); 
+    greeting();
   }
 };
 
@@ -174,7 +179,7 @@ function makeLotsOfThings() {
 
 function populateCard(card) {
   var freshCard = 
-      `<article class="task-card" data-id="${card.id}">
+      `<article class="task-card" id="lolo" data-id="${card.id}">
     <h3>${card.title}</h3>
     <figure class="card-task-section">
         <ul class="card-task-list">
@@ -182,7 +187,7 @@ function populateCard(card) {
     </figure>
     <section class="card-bottom">
       <div class="bottom-task-card-left-urgent">
-        <img id="urgent-button" class="urgent-button-task icon-button" src="images/urgent.svg" alt="urgent icon">
+        <button id="urgent-button" class="urgent-button-task icon-button" src="images/urgent.svg" alt="urgent icon"><button>
         <p>URGENT</p>  
         </div>
       <div class="bottom-task-card-right-delete">
@@ -206,29 +211,32 @@ function iterateThruTasks(theTasks, card) {
     <label class="content-to-check-${task.done}" for="task${i}">${task.content}</label>
     </li>`
   }).join("");
-// { 
- //   taskListIteration += `
- //     <li class="list-item">
- //       <img class="tick" src="images/checkbox.svg" alt="checkbox" data-id=${x.tasks[i].id} id="index ${i}"/>
- //       <p class="typed-todo">${x.tasks[i].content}</p>
- //     </li>
- //     `
- // } return taskListIteration;
+
 }
 
 
 
-// function iterateThruTasks(x) {
-//  var taskListIteration = '';
-//  for (var i = 0; i < x.tasks.length; i++){
-//    taskListIteration += `
-//      <li class="list-item">
-//        <img class="tick" src="images/checkbox.svg" alt="checkbox" data-id=${x.tasks[i].id} id="index ${i}"/>
-//        <p class="typed-todo">${x.tasks[i].content}</p>
-//      </li>
-//      `
-//  } return taskListIteration;
-// }
+
+
+
+function greeting(event){
+ var elements = newCard.querySelectorAll('.task-card')
+ console.log(elements)
+ if(!elements.length){
+ greetingMessage.removeAttribute('hidden', true)
+ } else if(elements.length) {
+   greetingMessage.setAttribute('hidden', true)
+ }
+};
+
+
+
+
+
+
+
+
+
 function searchFilter(e) {
   e.preventDefault();
   removeCardFilter ()
@@ -251,7 +259,27 @@ function removeCardFilter () {
 
 
 
+newCard.addEventListener('click', makeCardYellow) 
 
+function makeCardYellow (e) {
+  e.preventDefault();
+  var cardToYellow = document.getElementById('lolo');
+  var theUrgentButton = document.getElementById('urgent-button');
+
+  if (e.target.matches('#urgent-button')) {
+  taskArray.urgent = !taskArray.urgent;
+
+
+  
+  cardToYellow.classList.toggle('yellow');
+
+  theUrgentButton.classList.add('hey');
+  theUrgentButton.removeAttribute('background');
+  // localStorage.setItem('StoredList', JSON.stringify(taskArray))
+  
+}
+
+}
 
 
 
