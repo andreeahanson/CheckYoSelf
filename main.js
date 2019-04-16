@@ -14,7 +14,6 @@ var newCard = document.querySelector('.task-field');
 var cardTaskList = document.querySelector('.card-task-list');
 
 
-
 plusButton.addEventListener('click', instantiateSmallListItems);
 makeTaskListButton.addEventListener('click', makeLotsOfThings);
 tasksAside.addEventListener('click', blockAddTask);
@@ -100,7 +99,6 @@ function restoreList(e) {
   var card = new ToDoList(list.title, list.tasks, list.id, list.urgent);
   taskArray.push(list);
   populateCard(list);
-  console.log(list.tasks, list)
   iterateThruTasks(list.tasks, list);
   card.saveToStorage();
     })
@@ -162,7 +160,7 @@ function populateTask(object) {
 
 
 function makeLotsOfThings() {
-  if (titleInput.value && tasksAside.innerHTML) {
+  if (titleInput.value && taskList.length) {
   var card = new ToDoList (titleInput.value, taskList, Date.now());
   taskArray.push(card);
   populateCard(card);
@@ -247,6 +245,11 @@ function searchFilter(e) {
 function removeCardFilter () {
   newCard.innerHTML = '';
 };
+
+
+
+
+
 
 
 
