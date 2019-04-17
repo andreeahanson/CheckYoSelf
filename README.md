@@ -1,10 +1,10 @@
-##CHECK YO'SELF 
+## CHECK YO'SELF 
 
-###Description
+### Description
 
 Check Yo'Self is a web app that helps users keep organized by writing task lists, that they can keep track of by checking off tasks, marking their note-cards urgent, deleting them, and creating new ones.
 
-###Functionality
+### Functionality
 
 On top of the page there is a search bar with an input field and a search button, that filters the cards by title.
 On the left side of the page there are 2 more inputs: one for the title of the note-card and the second one for the things to do. There are 4 buttons in that area:
