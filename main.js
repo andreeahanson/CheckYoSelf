@@ -77,12 +77,17 @@ function blockAddTask(e) {
 
 
 function deleteCardFromDOM(e) {
+  var i = findTargetIndex(e);
   if (e.target.className === "delete-button icon-button") {
+    var counter = taskArray[i].tasks.filter(task => task.done);
+    counter.length === taskArray[i].tasks.length ? taskArray[i].updateTask(true) : taskArray[i].updateTask(false);
+    if (taskArray[i].done) {
     e.target.closest(".task-card").remove();
     var removedList = new ToDoList();
     var targetId = parseInt(e.target.closest(".task-card").dataset.id);
     removedList.deleteFromStorage(targetId); 
     greeting();
+    }
   }
 };
 
@@ -96,26 +101,44 @@ function clearAside() {
   unpopulateTask();
 };
 
-function restoreList(e) {
-  var getCards = localStorage.getItem('StoredList');
-  var parsedCards = JSON.parse(getCards);
-  if (parsedCards !== null) {
-    parsedCards.forEach(function(list){
-  var card = new ToDoList(list.title, list.tasks, list.id, list.urgent);
-  taskArray.push(list);
-  populateCard(list);
-  iterateThruTasks(list.tasks, list);
-  card.saveToStorage();
-  greeting();
-    })
+// function restoreList(e) {
+//   var getCards = localStorage.getItem('StoredList');
+//   var parsedCards = JSON.parse(getCards);
+//   if (parsedCards !== null) {
+//     parsedCards.forEach(function(list){
+//   var card = new ToDoList(list.title, list.tasks, list.id, list.urgent);
+//   taskArray.push(list);
+//   populateCard(list);
+//   iterateThruTasks(list.tasks, list);
+//   card.saveToStorage();
+//   greeting();
+//     })
+//   }
+
+
+
+
+  function restoreList(e) {
+    var getCards = localStorage.getItem('StoredList');
+    var parsedCards = JSON.parse(getCards);
+    if (parsedCards !== null) {
+      for (var i = 0; i < parsedCards.length; i++) {
+      var card = new ToDoList(parsedCards[i].title, parsedCards[i].tasks, parsedCards[i].id, parsedCards[i].urgent);
+      taskArray.push(card);
+      populateCard(card);
+      iterateThruTasks(card.tasks, card);
+      card.saveToStorage();
+      greeting();
+    } 
   }
+}
 
   // taskArray = taskArray.map(function(oldList) {
   //   var restoredList = new ToDoList(oldList.title, oldList.tasks, oldList.id, oldList.urgent);
   //   populateCard(restoredList);
   //   return restoredList;
   // });
-};
+
 
 function clearTaskField() {
   var newItem = document.querySelector('.aside-task-input');

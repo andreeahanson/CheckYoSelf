@@ -4,7 +4,7 @@ class ToDoList {
     this.tasks = tasks || [];
     this.id = id;
     this.urgent = urgent || false;
-
+    this.done = false;
     this.urgentImg;
     this.urgent ? this.urgentImg = 'images/urgent-active.svg' : this.urgentImg = 'images/urgent.svg';
   }
@@ -22,8 +22,8 @@ class ToDoList {
   localStorage.setItem('StoredList', JSON.stringify(parsedItems));
   };
 
-  updateTask (){
-    this.done = !this.done;
+  updateTask (state){
+    this.done = state;
   }
 
   updateToDo () {
