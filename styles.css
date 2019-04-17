@@ -37,7 +37,7 @@ body{
   width: auto;
 }
 
-h1{
+h1 {
   color: #ffff;
   font-weight: 800;
   font-size: 3em;
@@ -133,11 +133,6 @@ nav {
   word-break: break-word;
 }
 
-.aside-plus-button {
-  width: 52px;
-  height: 52px;
-} 
-
 .aside-todo-item input[type=text] {
   background: #f1f1f1;
   border: 2px solid #1f1f3d;
@@ -202,21 +197,13 @@ nav {
   margin-top: 2em;
 }
 
-.minus {
-  border: 1px solid white;
-  width: 50%;
-  height: 0;
-}
-
 .plus-button {
-  display: flex;
-  justify-content: center;
+  background-color: #1f1f3d;
+  height: 55px;
+  padding: 8px;
+  width: 15%;
 }
 
-.plus {
-  border: 1px solid white;
-  transform: rotate(90deg);
-}
 
 .aside-horizontal-line {
   border-top: 2px solid #246a7c;
@@ -224,9 +211,6 @@ nav {
   margin-bottom: 20px;
 }
 
-/*.disabled {
-  cursor: not-allowed;
-}*/
 
 main {
   background-color: #f2f6f7;
@@ -290,7 +274,7 @@ ul {
   padding: 10px;
 }
 
-p{
+p {
   color: #587a8b;
   margin: 0;
 }
@@ -310,9 +294,6 @@ p{
   height: 30px;
   width: 30px;
 }
-
-
-
 
 
 @media screen and (max-width: 850px) {
@@ -335,9 +316,7 @@ h1 {
   width: 15%;
 }
 
-
 }
-
 
 
 @media screen and (max-width: 690px) {
@@ -354,13 +333,11 @@ h1 {
   max-width: 350px;
 }
 
-
 .typed-todo {
   font-size: 20px;
 }
 
 }
-
 
 
 @media screen and (max-width: 425px) {
@@ -372,14 +349,13 @@ body {
 
 .top-section-checkyoself {
   display: block;
-  height: 7vh;
+  height: 25vw;
 }
 
 h1 {
   font-size: 6vw;
-  margin-left: 95px;
+  text-align: center;
 }
-
 
 .search-btn-and-input{
   margin-bottom: 3px;
@@ -414,10 +390,27 @@ h1 {
   height: 35px;
 }
 
+.aside-todo-title-text {
+   margin-top: 2px; 
+} 
+
 .button {
   font-size: 17px;
   height: 35px;
   margin-top: 30px;
+}
+
+.plus-button {
+  height: 35px;
+}
+
+.make-task-list-button,
+.clear-all-button {
+  margin-top: 20px;
+}
+
+.aside-horizontal-line {
+  margin: 20px;
 }
 
 main {
@@ -447,7 +440,7 @@ h3 {
   width: 18px;
 }
 
-p{
+p {
   font-size: 10px;
 }
 
@@ -477,8 +470,8 @@ li {
 ul {
   margin-top: auto;
 }
-}
 
+}
 
 
 
