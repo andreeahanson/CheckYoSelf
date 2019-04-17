@@ -27,7 +27,7 @@ clearAllButton.addEventListener('click', clearAside);
 newCard.addEventListener('click', checkOffTheTasks);
 searchButton.addEventListener('click', searchFilter);
 searchInput.addEventListener('keyup', searchFilter);
-
+newCard.addEventListener('click', cardUrgent)
 
 
 
@@ -49,7 +49,6 @@ function checkOffTheTasks (e) {
 }
 
 
-
 function blockAddTask(e) {
   var targetId = parseInt(e.target.closest(".aside-list-item").dataset.id);
   let index = 0;
@@ -59,21 +58,9 @@ function blockAddTask(e) {
       index = taskList.indexOf(taskList[i])
       taskList.splice(index,1)
     }
-  }
-
-  // taskList.forEach(task => {
-  //   if(task.id === targetId) {
-  //     index = taskList.indexOf(task)
-  //     taskList.splice(index)
-  //   }
-  // })
-  
+  }  
   e.target.closest("li").remove();
-  
 }
-
-
-
 
 
 function deleteCardFromDOM(e) {
@@ -89,8 +76,7 @@ function deleteCardFromDOM(e) {
     greeting();
     }
   }
-};
-
+}
 
 
 function clearAside() {
@@ -99,23 +85,7 @@ function clearAside() {
   newItem.value = "";
   titleInput.value = "";
   unpopulateTask();
-};
-
-// function restoreList(e) {
-//   var getCards = localStorage.getItem('StoredList');
-//   var parsedCards = JSON.parse(getCards);
-//   if (parsedCards !== null) {
-//     parsedCards.forEach(function(list){
-//   var card = new ToDoList(list.title, list.tasks, list.id, list.urgent);
-//   taskArray.push(list);
-//   populateCard(list);
-//   iterateThruTasks(list.tasks, list);
-//   card.saveToStorage();
-//   greeting();
-//     })
-//   }
-
-
+}
 
 
   function restoreList(e) {
@@ -131,13 +101,7 @@ function clearAside() {
       greeting();
     } 
   }
-}
-
-  // taskArray = taskArray.map(function(oldList) {
-  //   var restoredList = new ToDoList(oldList.title, oldList.tasks, oldList.id, oldList.urgent);
-  //   populateCard(restoredList);
-  //   return restoredList;
-  // });
+};
 
 
 function clearTaskField() {
@@ -152,15 +116,16 @@ function clearFields() {
   clearTaskField();
 };
 
+
 function unpopulateTask() {
   tasksAside.innerHTML= "";
 };
+
 
 function instantiateSmallListItems(e) {
   e.preventDefault()
   if (taskInput.value) {
   var object = new Items (taskInput.value);
-  console.log(taskList)
   taskList.push(object);
   populateTask(object);
   clearTaskField();
@@ -176,16 +141,7 @@ function populateTask(object) {
       <p class="aside-typed-todo">${object.content}</p>
     </li>`
   }
-};
-
-// function createToDoCard() {
-//   var card = new ToDoList (titleInput.value, taskList, Date.now());
-//   taskArray.push(card);
-//   card.saveToStorage(taskArray);
-//   populateCard(card);
-//   iterateThruTasks(taskList, card);
-//   return card;
-// };
+}
 
 
 function makeLotsOfThings() {
@@ -199,7 +155,8 @@ function makeLotsOfThings() {
   card.saveToStorage();
   clearFields();
   }
-};
+}
+
 
 function populateCard(card) {
   var freshCard = 
@@ -221,14 +178,12 @@ function populateCard(card) {
     </section>
   </article>`
   newCard.insertAdjacentHTML('afterbegin', freshCard);
-  };
+}
 
 
 function iterateThruTasks(theTasks, card) {
-  console.log(theTasks, card)
   var dataID = `[data-id = "${card.id}"]`;
   var targetCard = document.querySelector(dataID);  
-  // console.log(dataID)
   targetCard.childNodes[3].childNodes[1].innerHTML = theTasks.map((task, i)=> {
     return `<li class="list-item">
     <input class="task-to-check-${task.done}" type="checkbox" data-index=${i} id="task${i}" ${task.done ? 'checked' : ""}/>
@@ -239,26 +194,14 @@ function iterateThruTasks(theTasks, card) {
 }
 
 
-
-
-
-
 function greeting(event){
  var elements = newCard.querySelectorAll('.task-card')
- // console.log(elements)
  if(!elements.length){
  greetingMessage.removeAttribute('hidden', true)
  } else if(elements.length) {
   greetingMessage.setAttribute('hidden', true)
  }
-};
-
-
-
-
-
-
-
+}
 
 
 function searchFilter(e) {
@@ -268,82 +211,32 @@ function searchFilter(e) {
   var textSearch = taskArray.filter(function (task) {
     return task.title.toLowerCase().includes(searchText);
   });
-
   textSearch.forEach(function(card) {
     populateCard(card);
   })
-};
+}
 
-function removeCardFilter () {
+
+function removeCardFilter() {
   newCard.innerHTML = '';
-};
+}
 
 
-
-
-
-
-// newCard.addEventListener('click', makeCardYellow) 
-
-// function makeCardYellow (e) {
-//   e.preventDefault();
-//   var cardToYellow = document.getElementById('lolo');
-//   var theUrgentButton = document.getElementById('urgent-button');
-
-//   if (e.target.matches('#urgent-button')) {
-//   taskArray.urgent = !taskArray.urgent;
-
-
-  
-//   cardToYellow.classList.toggle('yellow');
-
-//   theUrgentButton.classList.toggle('hey');
-
-//   // localStorage.setItem('StoredList', JSON.stringify(taskArray))
-  
-// }
-
-// }
-
-
-
-
-
-
-
-
-
-
-
-// URGENT BUTTON FUNCTION - NOT WORKING YET
-
-newCard.addEventListener('click', cardUrgent)
-
-
-
-
-function cardUrgent (e) {
+function cardUrgent(e) {
   if (e.target.className === 'urgent-button-task icon-button') {
     var card = e.target.closest('.task-card');
-    console.log(card)
     var index = findCardIndex(card);
-    console.log('index', index)
-    console.log(taskArray[index].title)
     var cardToMakeUrgent = new ToDoList(taskArray[index].title, taskArray[index].tasks, taskArray[index].id, taskArray[index].urgent ); 
   cardToMakeUrgent.updateToDo();
-
   taskArray.splice(index, 1, cardToMakeUrgent)
   cardToMakeUrgent.saveToStorage();
-  // cardToMakeUrgent.innerHTML = '';
-}
+  }
 }
 
 
 function findCardIndex(card) {
   var cardId = card.dataset.id;
   return taskArray.findIndex(function(item) {
-    // console.log(item.id)
-    // console.log(cardId)
     return item.id == cardId;
   });
 }
@@ -358,6 +251,7 @@ function saveUrgency(e, urgent) {
   }
   })
 }
+
 
 function reinstantiateCards(i) {
   return new ToDoList (taskArray[i].title, taskArray[i].tasks, taskArray[i].id, taskArray[i].urgent);
