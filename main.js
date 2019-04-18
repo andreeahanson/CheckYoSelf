@@ -45,8 +45,12 @@ function checkOffTheTasks (e) {
   var index = element.dataset.index;
   var taskIndex = findTargetIndex(e);
   taskArray[taskIndex].tasks[index].done = !taskArray[taskIndex].tasks[index].done;
+  crossTasks(e);
   localStorage.setItem('StoredList', JSON.stringify(taskArray))
 }
+
+
+
 
 
 function blockAddTask(e) {
@@ -185,13 +189,26 @@ function iterateThruTasks(theTasks, card) {
   var dataID = `[data-id = "${card.id}"]`;
   var targetCard = document.querySelector(dataID);  
   targetCard.childNodes[3].childNodes[1].innerHTML = theTasks.map((task, i)=> {
-    return `<li class="list-item">
-    <input class="task-to-check-${task.done}" type="checkbox" data-index=${i} id="task${i}" ${task.done ? 'checked' : ""}/>
-    <label class="content-to-check-${task.done}" for="task${i}">${task.content}</label>
+    return `<li class="list-item list-item-${task.done}">
+    <input class="task-to-check task-to-check-${task.done}" type="checkbox" data-index=${i} id="task${i}" ${task.done ? 'checked' : ""}/>
+    <label class="content-to-check content-to-check-${task.done}" for="task${i}">${task.content}</label>
     </li>`
   }).join("");
-
 }
+
+
+function crossTasks(e) {
+  var index = findTargetIndex(e);
+  var ulTasks = e.target.closest('article').children[1].children[0];
+  taskArray[index].tasks.map((task, i) => {
+    // console.log(ulTasks.children[i])
+    ulTasks.children[i].className = task.done ? `list-item list-item-${task.done}` : `list-item list-item-${task.done}`;
+    console.log(ulTasks.children[i])
+  })
+}
+
+
+
 
 
 function greeting(event){
