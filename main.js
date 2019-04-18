@@ -160,20 +160,20 @@ function makeLotsOfThings() {
 
 function populateCard(card) {
   var freshCard = 
-      `<article class="task-card" id="lolo" data-id="${card.id}">
+      `<article class="task-card task-card-${card.urgent}" id="lolo" data-id="${card.id}">
     <h3>${card.title}</h3>
-    <figure class="card-task-section">
+    <figure class="card-task-section card-task-section-${card.urgent}">
         <ul class="card-task-list">
         </ul>
     </figure>
-    <section class="card-bottom">
+    <section class="card-bottom card-bottom-${card.urgent}">
       <div class="bottom-task-card-left-urgent">
-        <img id="urgent-button" class="urgent-button-task icon-button" src="images/urgent.svg" alt="urgent icon">
-        <p>URGENT</p>  
+        <img id="urgent-button" class="urgent-button-task icon-button" src="${card.urgent ? "images/urgent-active.svg" : "images/urgent.svg"}" alt="urgent icon">
+        <p class="bottom-card-urgent-word bottom-card-urgent-word-${card.urgent}">URGENT</p>  
         </div>
       <div class="bottom-task-card-right-delete">
         <img src="images/delete.svg" alt="delete button" class="delete-button icon-button">
-        <p>DELETE</p>  
+        <p class-"bottom-card-delete-word">DELETE</p>  
       </div>
     </section>
   </article>`
@@ -229,6 +229,7 @@ function cardUrgent(e) {
     var cardToMakeUrgent = new ToDoList(taskArray[index].title, taskArray[index].tasks, taskArray[index].id, taskArray[index].urgent ); 
   cardToMakeUrgent.updateToDo();
   taskArray.splice(index, 1, cardToMakeUrgent)
+  highlightCard(e);
   cardToMakeUrgent.saveToStorage();
   }
 }
@@ -242,25 +243,21 @@ function findCardIndex(card) {
 }
 
 
-function saveUrgency(e, urgent) {
-  taskArray.forEach(function(theList, index){
-  var myCardList = reinstantiateCards(index);
-  var cardId = parseInt(e.target.parentNode.parentNode.parentNode.dataset.id);
-  if (cardId === theList.id) {
-    myCardList.updateList(taskArray, index, urgent);
-  }
-  })
-}
-
-
-function reinstantiateCards(i) {
-  return new ToDoList (taskArray[i].title, taskArray[i].tasks, taskArray[i].id, taskArray[i].urgent);
+function highlightCard(e) {
+    var card = e.target.closest('.task-card');
+    var index = findCardIndex(card);
+    var obj = taskArray[index];
+    card.className = `task-card task-card-${obj.urgent}`;
+    card.childNodes[3].className = `card-task-section card-task-section-${obj.urgent}`;
+    card.childNodes[5].className = `card-bottom card-bottom-${obj.urgent}`;
+    card.childNodes[5].childNodes[1].childNodes[3].className = `bottom-card-urgent-word bottom-card-urgent-word-${obj.urgent}`; 
+    card.childNodes[5].childNodes[1].childNodes[1].src = `${obj.urgent ? "images/urgent-active.svg" : "images/urgent.svg"}`;
 }
 
 
 
 
-
+// images/urgent.svg
 
 
 
