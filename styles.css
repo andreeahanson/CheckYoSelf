@@ -312,6 +312,15 @@ ul {
   color: red;
 }
 
+.list-item {
+  color: #1f1f3d;
+  font-style: normal;
+}
+
+.list-item-true {
+  color: #3c6577;
+  font-style: italic;
+}
 
 
 
