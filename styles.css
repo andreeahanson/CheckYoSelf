@@ -274,7 +274,8 @@ ul {
   padding: 10px;
 }
 
-p {
+.bottom-card-urgent-word
+.bottom-card-delete-word {
   color: #587a8b;
   margin: 0;
 }
@@ -294,6 +295,24 @@ p {
   height: 30px;
   width: 30px;
 }
+
+.task-card-true {
+  background-color: yellow;
+}
+
+.card-task-section-true {
+  border-top: 1px solid orange;
+}
+
+.card-bottom-true {
+  border-top: 1px solid orange;
+}
+
+.bottom-card-urgent-word-true {
+  color: red;
+}
+
+
 
 
 @media screen and (max-width: 850px) {
