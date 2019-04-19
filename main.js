@@ -74,9 +74,8 @@ function deleteCardFromDOM(e) {
     counter.length === taskArray[i].tasks.length ? taskArray[i].updateTask(true) : taskArray[i].updateTask(false);
     if (taskArray[i].done) {
     e.target.closest(".task-card").remove();
-    var removedList = new ToDoList();
-    var targetId = parseInt(e.target.closest(".task-card").dataset.id);
-    removedList.deleteFromStorage(targetId); 
+    taskArray[i].deleteFromStorage(i); 
+    localStorage.setItem('StoredList', JSON.stringify(taskArray));
     greeting();
     }
   }
@@ -190,8 +189,8 @@ function iterateThruTasks(theTasks, card) {
   var targetCard = document.querySelector(dataID);  
   targetCard.childNodes[3].childNodes[1].innerHTML = theTasks.map((task, i)=> {
     return `<li class="list-item list-item-${task.done}">
-    <input class="task-to-check task-to-check-${task.done}" type="checkbox" data-index=${i} id="task${i}" ${task.done ? 'checked' : ""}/>
-    <label class="content-to-check content-to-check-${task.done}" for="task${i}">${task.content}</label>
+    <input class="task-to-check task-to-check-${task.done}" type="checkbox" data-index=${i} id="${Date.now()}-${i}" ${task.done ? 'checked' : ""}/>
+    <label class="content-to-check content-to-check-${task.done}" for="${Date.now()}-${i}">${task.content}</label>
     </li>`
   }).join("");
 }
@@ -221,21 +220,12 @@ function greeting(event){
 }
 
 
-function searchFilter(e) {
-  e.preventDefault();
-  removeCardFilter ()
-  var searchText = searchInput.value;
-  var textSearch = taskArray.filter(function (task) {
-    return task.title.toLowerCase().includes(searchText);
-  });
-  textSearch.forEach(function(card) {
-    populateCard(card);
+function searchFilter() {
+  taskArray.map((obj,i)=> {
+    var dataID = `[data-id = "${obj.id}"]`;
+    var targetCard = document.querySelector(dataID);  
+    targetCard.style.display = obj.title.toLowerCase().includes(searchInput.value.toLowerCase()) ? "block" : "none";
   })
-}
-
-
-function removeCardFilter() {
-  newCard.innerHTML = '';
 }
 
 
@@ -274,7 +264,7 @@ function highlightCard(e) {
 
 
 
-// images/urgent.svg
+
 
 
 

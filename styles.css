@@ -322,6 +322,28 @@ ul {
   font-style: italic;
 }
 
+.task-to-check {
+  display: none;
+}
+
+.content-to-check::before {
+  background-image: url(images/checkbox.svg);
+  content: '';
+  display: inline-block;
+  height: 20px;
+  position: relative;
+  right: 5px;
+  top: 5px;
+  width: 20px;
+}
+
+:checked + .content-to-check::before {
+  background-image: url(images/checkbox-active.svg);
+  content: '';
+  height: 20px;
+  width: 20px;
+}
+
 
 
 @media screen and (max-width: 850px) {
