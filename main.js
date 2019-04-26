@@ -13,9 +13,10 @@ var titleInput = document.querySelector('#todo-title-input');
 var newCard = document.querySelector('.task-field');
 var cardTaskList = document.querySelector('.card-task-list');
 var greetingMessage = document.querySelector('.greeting');
+var addTaskForm = document.querySelector('.aside-todo-item');
 
 
-plusButton.addEventListener('click', instantiateSmallListItems);
+addTaskForm.addEventListener('submit', addListItem);
 makeTaskListButton.addEventListener('click', makeLotsOfThings);
 makeTaskListButton.addEventListener('click', greeting);
 tasksAside.addEventListener('click', blockAddTask);
@@ -55,7 +56,8 @@ function checkOffTheTasks (e) {
 
 function blockAddTask(e) {
   var targetId = parseInt(e.target.closest(".aside-list-item").dataset.id);
-  let index = 0;
+  // let index = 0;
+  console.log(e.target.closest(".aside-list-item"))
 
   for(let i=0; i < taskList.length ; i++){
     if(taskList[i].id === targetId) {
@@ -125,7 +127,7 @@ function unpopulateTask() {
 };
 
 
-function instantiateSmallListItems(e) {
+function addListItem(e) {
   e.preventDefault()
   if (taskInput.value) {
   var object = new Items (taskInput.value);
@@ -185,8 +187,9 @@ function populateCard(card) {
 
 
 function iterateThruTasks(theTasks, card) {
-  var dataID = `[data-id = "${card.id}"]`;
-  var targetCard = document.querySelector(dataID);  
+  // var dataID = `[data-id = "${card.id}"]`;
+  // var targetCard = document.querySelector(dataID); 
+  var targetCard = document.querySelector('.task-card') 
   targetCard.childNodes[3].childNodes[1].innerHTML = theTasks.map((task, i)=> {
     return `<li class="list-item list-item-${task.done}">
     <input class="task-to-check task-to-check-${task.done}" type="checkbox" data-index=${i} id="${Date.now()}-${i}" ${task.done ? 'checked' : ""}/>
