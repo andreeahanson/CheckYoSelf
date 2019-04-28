@@ -28,7 +28,7 @@ newCard.addEventListener('click', checkOffTheTasks);
 searchButton.addEventListener('click', searchFilter);
 searchInput.addEventListener('keyup', searchFilter);
 newCard.addEventListener('click', cardUrgent)
-
+filterByUrgencyButton.addEventListener('click', filterByUrgency)
 
 
 function findTargetIndex (e) {
@@ -225,6 +225,15 @@ function searchFilter() {
     var dataID = `[data-id = "${obj.id}"]`;
     var targetCard = document.querySelector(dataID);  
     targetCard.style.display = obj.title.toLowerCase().includes(searchInput.value.toLowerCase()) ? "block" : "none";
+  })
+}
+
+
+function filterByUrgency() {
+  taskArray.map((obj,i)=> {
+    var dataID = `[data-id = "${obj.id}"]`;
+    var targetCard = document.querySelector(dataID);  
+    targetCard.style.display = obj.urgent ? "block" : "none";
   })
 }
 
